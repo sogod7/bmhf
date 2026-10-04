@@ -16,6 +16,23 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
   footerBottom.appendChild(adminLogin);
 }
 
+const desktopNav = document.querySelector('.desktop-nav');
+if (desktopNav && !desktopNav.querySelector('[data-video-library]')) {
+  const videoLink = document.createElement('a');
+  videoLink.href = '/videos';
+  videoLink.dataset.videoLibrary = 'true';
+  videoLink.textContent = '영상자료';
+  desktopNav.appendChild(videoLink);
+}
+const mobilePanel = document.querySelector('[data-mobile-panel]');
+if (mobilePanel && !mobilePanel.querySelector('[data-video-library]')) {
+  const videoLink = document.createElement('a');
+  videoLink.href = '/videos';
+  videoLink.dataset.videoLibrary = 'true';
+  videoLink.textContent = '영상자료';
+  mobilePanel.appendChild(videoLink);
+}
+
 const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
 if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
   const launcher = document.createElement('a');
