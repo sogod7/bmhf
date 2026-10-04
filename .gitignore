@@ -3,3 +3,4 @@ github_token.txt
 .next
 node_modules
 .env*
+!.env.example
