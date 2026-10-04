@@ -5,6 +5,16 @@ if (toggle && panel) {
   toggle.addEventListener('click', () => panel.classList.toggle('is-open'));
   panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => panel.classList.remove('is-open')));
 }
+
+const footerBottom = document.querySelector('.footer-bottom');
+if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
+  const adminLogin = document.createElement('a');
+  adminLogin.href = '/admin';
+  adminLogin.dataset.adminLogin = 'true';
+  adminLogin.className = 'admin-login-link';
+  adminLogin.textContent = '관리자 로그인';
+  footerBottom.appendChild(adminLogin);
+}
 const header = document.querySelector('[data-header]');
 window.addEventListener('scroll', () => {
   if (!header) return;

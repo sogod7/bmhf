@@ -36,3 +36,5 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
 .info-table th{background:#F8FAFC;color:#1E3A5F}.timeline span{background:#fff;color:var(--blue)}
 .quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(59,130,246,.1)}
 .mobile-panel{background:#FFFFFF}
+.admin-login-link{margin-left:auto;color:#C9D9ED!important;font-weight:800;white-space:nowrap}.admin-login-link:hover{color:#FFFFFF!important}
+@media (max-width:720px){.admin-login-link{margin-left:0}}
