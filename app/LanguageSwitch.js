@@ -4,6 +4,14 @@ import { useEffect } from 'react';
 
 export default function LanguageSwitch() {
   useEffect(() => {
+    const brand = document.querySelector('.nav .brand');
+    if (brand && !document.querySelector('[data-app-brand-slogan]')) {
+      const slogan = document.createElement('span');
+      slogan.dataset.appBrandSlogan = 'true';
+      slogan.className = 'app-brand-slogan';
+      slogan.innerHTML = '<span>백마고주파</span><span>BAEK-MA High Frequency</span>';
+      brand.insertAdjacentElement('afterend', slogan);
+    }
     const nav = document.querySelector('.nav nav');
     if (!nav || nav.querySelector('[data-app-language-switch]')) return;
     const english = window.location.pathname.startsWith('/en');

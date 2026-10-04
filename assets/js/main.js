@@ -24,6 +24,14 @@ if (desktopNav && !desktopNav.querySelector('[data-video-library]')) {
   videoLink.textContent = '영상자료';
   desktopNav.appendChild(videoLink);
 }
+const brand = document.querySelector('.header-inner .brand');
+if (brand && !document.querySelector('[data-brand-slogan]')) {
+  const slogan = document.createElement('span');
+  slogan.dataset.brandSlogan = 'true';
+  slogan.className = 'brand-slogan';
+  slogan.innerHTML = '<span>백마고주파</span><span>BAEK-MA High Frequency</span>';
+  brand.insertAdjacentElement('afterend', slogan);
+}
 if (desktopNav && !document.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
