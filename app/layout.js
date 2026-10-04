@@ -1,4 +1,5 @@
 import './site.css';
+import './fonts.css';
 import './horse.css';
 import './brand.css';
 import './language.css';
