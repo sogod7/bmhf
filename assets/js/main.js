@@ -17,7 +17,7 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
 }
 
 const desktopNav = document.querySelector('.desktop-nav');
-const globalNavigation = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+const globalNavigation = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['제품소개', '/products'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
 const languageVisible = !document.cookie.split('; ').includes('bmhf_language_visible=off');
 if (desktopNav) desktopNav.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
 const brand = document.querySelector('.header-inner .brand');
