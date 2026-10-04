@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function EnglishResources() { return <main><header className="nav"><Link href="/en" className="brand">BMHF</Link><nav><Link href="/en">Home</Link><Link href="/en/board">News</Link></nav></header><section className="page-head"><p className="kicker dark">TECHNICAL RESOURCES</p><h1>Catalogues and technical documents.</h1><p>Approved documents will be managed and delivered from the BMHF resource library.</p></section></main>; }
