@@ -1,0 +1,1 @@
+.horse-mark{width:144px;height:144px;display:block;filter:drop-shadow(0 18px 22px rgba(0,0,0,.24));animation:horseFloat 3s ease-in-out infinite}.horse-mark.small{flex:0 0 auto;width:54px;height:54px;animation:none;filter:drop-shadow(0 5px 9px rgba(5,34,76,.18))}@keyframes horseFloat{50%{transform:translateY(-7px)}}@media(max-width:760px){.support-hero>.horse-mark{display:none}}

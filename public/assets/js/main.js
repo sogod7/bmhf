@@ -17,13 +17,8 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
 }
 
 const desktopNav = document.querySelector('.desktop-nav');
-if (desktopNav && !desktopNav.querySelector('[data-video-library]')) {
-  const videoLink = document.createElement('a');
-  videoLink.href = '/videos';
-  videoLink.dataset.videoLibrary = 'true';
-  videoLink.textContent = '영상자료';
-  desktopNav.appendChild(videoLink);
-}
+const globalNavigation = [['회사소개', '/company.html'], ['기술력', '/technology.html'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+if (desktopNav) desktopNav.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
 const brand = document.querySelector('.header-inner .brand');
 if (brand && !document.querySelector('[data-brand-slogan]')) {
   const slogan = document.createElement('span');
@@ -41,13 +36,7 @@ if (desktopNav && !document.querySelector('[data-language-switch]')) {
   desktopNav.insertAdjacentElement('afterend', languages);
 }
 const mobilePanel = document.querySelector('[data-mobile-panel]');
-if (mobilePanel && !mobilePanel.querySelector('[data-video-library]')) {
-  const videoLink = document.createElement('a');
-  videoLink.href = '/videos';
-  videoLink.dataset.videoLibrary = 'true';
-  videoLink.textContent = '영상자료';
-  mobilePanel.appendChild(videoLink);
-}
+if (mobilePanel) mobilePanel.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
 if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
@@ -77,7 +66,7 @@ if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
   launcher.dataset.aiSupportLauncher = 'true';
   launcher.className = 'ai-support-launcher';
   launcher.setAttribute('aria-label', 'AI 고객센터 열기');
-  launcher.innerHTML = '<span class="ai-support-pulse"></span><span class="ai-support-robot" aria-hidden="true"><i></i><b></b><em></em></span><span class="ai-support-label">AI 고객센터<small>공정 상담</small></span>';
+  launcher.innerHTML = '<span class="ai-support-pulse"></span><img class="ai-support-horse" src="/assets/images/ai-horse.svg" alt="" /><span class="ai-support-label">AI 고객센터<small>공정 상담</small></span>';
   document.body.appendChild(launcher);
 }
 const header = document.querySelector('[data-header]');
