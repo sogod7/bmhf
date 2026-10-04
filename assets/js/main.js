@@ -9,7 +9,7 @@ if (toggle && panel) {
 const footerBottom = document.querySelector('.footer-bottom');
 if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
   const adminLogin = document.createElement('a');
-  adminLogin.href = '/admin';
+  adminLogin.href = '/admin/login';
   adminLogin.dataset.adminLogin = 'true';
   adminLogin.className = 'admin-login-link';
   adminLogin.textContent = '관리자 로그인';
