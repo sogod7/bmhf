@@ -61,7 +61,7 @@ if (heroVideos.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce
   heroVideos.forEach((video, index) => video.addEventListener('ended', () => playVideo((index + 1) % heroVideos.length)));
   playVideo(0);
 }
-if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
+if (!document.querySelector('[data-ai-support-launcher]')) {
   const launcher = document.createElement('a');
   launcher.href = '/support';
   launcher.dataset.aiSupportLauncher = 'true';
