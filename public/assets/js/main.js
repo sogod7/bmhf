@@ -15,6 +15,17 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
   adminLogin.textContent = '관리자 로그인';
   footerBottom.appendChild(adminLogin);
 }
+
+const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
+  const launcher = document.createElement('a');
+  launcher.href = '/support';
+  launcher.dataset.aiSupportLauncher = 'true';
+  launcher.className = 'ai-support-launcher';
+  launcher.setAttribute('aria-label', 'AI 고객센터 열기');
+  launcher.innerHTML = '<span class="ai-support-pulse"></span><span class="ai-support-robot" aria-hidden="true"><i></i><b></b><em></em></span><span class="ai-support-label">AI 고객센터<small>공정 상담</small></span>';
+  document.body.appendChild(launcher);
+}
 const header = document.querySelector('[data-header]');
 window.addEventListener('scroll', () => {
   if (!header) return;
