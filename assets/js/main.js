@@ -29,14 +29,15 @@ if (brand && !document.querySelector('[data-brand-slogan]')) {
   const slogan = document.createElement('span');
   slogan.dataset.brandSlogan = 'true';
   slogan.className = 'brand-slogan';
-  slogan.innerHTML = '<span>백마고주파</span><span>BAEK-MA High Frequency</span>';
+  slogan.innerHTML = '<span>주식회사 백마고주파</span><span>BAEK-MA High Frequency</span>';
   brand.insertAdjacentElement('afterend', slogan);
 }
 if (desktopNav && !document.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
   languages.className = 'language-switch';
-  languages.innerHTML = '<a class="is-active" href="/index.html" aria-label="한국어 사이트"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en" aria-label="English site"><img src="/assets/images/flag-us.svg" alt="" />English</a>';
+  languages.innerHTML = '<button type="button" aria-expanded="false"><img src="/assets/images/flag-kr.svg" alt="" />한국어 <span>⌄</span></button><div class="language-menu"><a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a></div>';
+  languages.querySelector('button').addEventListener('click', () => { const open = languages.classList.toggle('is-open'); languages.querySelector('button').setAttribute('aria-expanded', String(open)); });
   desktopNav.insertAdjacentElement('afterend', languages);
 }
 const mobilePanel = document.querySelector('[data-mobile-panel]');
@@ -51,7 +52,8 @@ if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
   languages.className = 'language-switch mobile-language-switch';
-  languages.innerHTML = '<a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a>';
+  languages.innerHTML = '<button type="button" aria-expanded="false"><img src="/assets/images/flag-kr.svg" alt="" />한국어 <span>⌄</span></button><div class="language-menu"><a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a></div>';
+  languages.querySelector('button').addEventListener('click', () => { const open = languages.classList.toggle('is-open'); languages.querySelector('button').setAttribute('aria-expanded', String(open)); });
   mobilePanel.appendChild(languages);
 }
 

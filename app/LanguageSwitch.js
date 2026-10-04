@@ -9,7 +9,7 @@ export default function LanguageSwitch() {
       const slogan = document.createElement('span');
       slogan.dataset.appBrandSlogan = 'true';
       slogan.className = 'app-brand-slogan';
-      slogan.innerHTML = '<span>백마고주파</span><span>BAEK-MA High Frequency</span>';
+      slogan.innerHTML = '<span>주식회사 백마고주파</span><span>BAEK-MA High Frequency</span>';
       brand.insertAdjacentElement('afterend', slogan);
     }
     const nav = document.querySelector('.nav nav');
@@ -18,7 +18,8 @@ export default function LanguageSwitch() {
     const switcher = document.createElement('div');
     switcher.dataset.appLanguageSwitch = 'true';
     switcher.className = 'app-language-switch';
-    switcher.innerHTML = `<a class="${english ? '' : 'is-active'}" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a class="${english ? 'is-active' : ''}" href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a>`;
+    switcher.innerHTML = `<button type="button" aria-expanded="false"><img src="/assets/images/${english ? 'flag-us.svg' : 'flag-kr.svg'}" alt="" />${english ? 'English' : '한국어'} <span>⌄</span></button><div class="app-language-menu"><a class="${english ? '' : 'is-active'}" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a class="${english ? 'is-active' : ''}" href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a></div>`;
+    switcher.querySelector('button').addEventListener('click', () => { const open = switcher.classList.toggle('is-open'); switcher.querySelector('button').setAttribute('aria-expanded', String(open)); });
     nav.appendChild(switcher);
   }, []);
   return null;
