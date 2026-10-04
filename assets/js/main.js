@@ -17,7 +17,8 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
 }
 
 const desktopNav = document.querySelector('.desktop-nav');
-const globalNavigation = [['회사소개', '/company.html'], ['기술력', '/technology.html'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+const globalNavigation = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+const languageVisible = !document.cookie.split('; ').includes('bmhf_language_visible=off');
 if (desktopNav) desktopNav.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
 const brand = document.querySelector('.header-inner .brand');
 if (brand && !document.querySelector('[data-brand-slogan]')) {
@@ -27,7 +28,7 @@ if (brand && !document.querySelector('[data-brand-slogan]')) {
   slogan.innerHTML = '<span>주식회사 백마고주파</span><span class="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span class="brand-initial">BMHF</span>';
   brand.insertAdjacentElement('afterend', slogan);
 }
-if (desktopNav && !document.querySelector('[data-language-switch]')) {
+if (languageVisible && desktopNav && !document.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
   languages.className = 'language-switch';
@@ -37,7 +38,7 @@ if (desktopNav && !document.querySelector('[data-language-switch]')) {
 }
 const mobilePanel = document.querySelector('[data-mobile-panel]');
 if (mobilePanel) mobilePanel.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
-if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
+if (languageVisible && mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
   languages.className = 'language-switch mobile-language-switch';
