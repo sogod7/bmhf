@@ -58,6 +58,19 @@ if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
 }
 
 const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+const heroVideos = [...document.querySelectorAll('[data-hero-video]')];
+if (heroVideos.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const playVideo = (index) => {
+    heroVideos.forEach((video, videoIndex) => {
+      const active = videoIndex === index;
+      video.classList.toggle('is-active', active);
+      if (!active) { video.pause(); video.currentTime = 0; }
+    });
+    heroVideos[index].play().catch(() => {});
+  };
+  heroVideos.forEach((video, index) => video.addEventListener('ended', () => playVideo((index + 1) % heroVideos.length)));
+  playVideo(0);
+}
 if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
   const launcher = document.createElement('a');
   launcher.href = '/support';
