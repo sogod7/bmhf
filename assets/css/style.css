@@ -31,7 +31,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
 .tech-hero{background-image:linear-gradient(135deg,rgba(30,58,95,.92),rgba(39,73,109,.72)),url('../images/tech-control-room.jpg')}
 .solutions-hero{background-image:linear-gradient(135deg,rgba(30,58,95,.92),rgba(39,73,109,.70)),url('../images/system-generator.jpg')}
 .app-hero{background-image:linear-gradient(135deg,rgba(30,58,95,.92),rgba(39,73,109,.70)),url('../images/app-industrial.jpg')}
-.project-hero{background-image:linear-gradient(135deg,rgba(30,58,95,.92),rgba(39,73,109,.70)),url('../images/project-shaft.jpg')}
+.small-hero{background-image:linear-gradient(90deg,rgba(5,22,46,.93),rgba(5,22,46,.62)),url('../images/hero-company-engineering.png')}.tech-hero{background-image:linear-gradient(90deg,rgba(5,22,46,.93),rgba(5,22,46,.58)),url('../images/hero-technology-induction.png')}.solutions-hero{background-image:linear-gradient(90deg,rgba(5,22,46,.93),rgba(5,22,46,.58)),url('../images/hero-solutions-integrated.png')}.app-hero{background-image:linear-gradient(90deg,rgba(5,22,46,.93),rgba(5,22,46,.58)),url('../images/hero-applications-components.png')}.project-hero{background-image:linear-gradient(90deg,rgba(5,22,46,.93),rgba(5,22,46,.58)),url('../images/hero-projects-turnkey.png')}
 .contact-hero{background-image:linear-gradient(135deg,rgba(30,58,95,.94),rgba(39,73,109,.72)),url('../images/project-line.jpg')}
 .info-table th{background:#F8FAFC;color:#1E3A5F}.timeline span{background:#fff;color:var(--blue)}
 .quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(59,130,246,.1)}
