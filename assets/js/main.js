@@ -24,6 +24,13 @@ if (desktopNav && !desktopNav.querySelector('[data-video-library]')) {
   videoLink.textContent = '영상자료';
   desktopNav.appendChild(videoLink);
 }
+if (desktopNav && !document.querySelector('[data-language-switch]')) {
+  const languages = document.createElement('div');
+  languages.dataset.languageSwitch = 'true';
+  languages.className = 'language-switch';
+  languages.innerHTML = '<a class="is-active" href="/index.html" aria-label="한국어 사이트"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en" aria-label="English site"><img src="/assets/images/flag-us.svg" alt="" />English</a>';
+  desktopNav.insertAdjacentElement('afterend', languages);
+}
 const mobilePanel = document.querySelector('[data-mobile-panel]');
 if (mobilePanel && !mobilePanel.querySelector('[data-video-library]')) {
   const videoLink = document.createElement('a');
@@ -31,6 +38,13 @@ if (mobilePanel && !mobilePanel.querySelector('[data-video-library]')) {
   videoLink.dataset.videoLibrary = 'true';
   videoLink.textContent = '영상자료';
   mobilePanel.appendChild(videoLink);
+}
+if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
+  const languages = document.createElement('div');
+  languages.dataset.languageSwitch = 'true';
+  languages.className = 'language-switch mobile-language-switch';
+  languages.innerHTML = '<a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a>';
+  mobilePanel.appendChild(languages);
 }
 
 const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');

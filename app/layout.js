@@ -1,5 +1,7 @@
 import './site.css';
 import './brand.css';
+import './language.css';
+import LanguageSwitch from './LanguageSwitch';
 
 export const metadata = {
   title: 'BMHF | Induction System Engineering',
@@ -7,5 +9,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body>{children}<LanguageSwitch /></body></html>;
 }
