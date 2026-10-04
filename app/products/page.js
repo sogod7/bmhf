@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import { productGroups, productImage } from '../../lib/products';
 import './products.css';
+import './catalog.css';
 
 export const metadata = { title: '제품소개 | BMHF' };
 
+const tagsByGroup = { 'heat-treatment': ['맞춤 코일', '템퍼링 연계', '자동 이송'], brazing: ['접합 품질 관리', '전용 지그', '다공정 자동화'], heating: ['출력·주파수 선정', '정밀 온도 제어', '안전 인터록'] };
+
 export default function ProductsPage() {
-  return <main className="products-page"><section className="products-hero"><div><p>BMHF PRODUCT SYSTEMS</p><h1>공정에 맞춘<br />고주파 장비 솔루션</h1><span>열처리, 브레이징, 가열기 제품군을 워크피스와 생산 조건에 맞춰 구성합니다.</span></div></section><section className="product-intro"><div className="product-tabs">{productGroups.map((group, index) => <a key={group.id} href={`#${group.id}`}><b>0{index + 1}</b><strong>{group.label}</strong><span>{group.en}</span></a>)}</div>{productGroups.map((group) => <section className="product-group" id={group.id} key={group.id}><div className="product-group-head"><img src={group.hero} alt="" /><div><p>{group.en}</p><h2>{group.label}</h2><span>{group.description}</span></div></div><div className="product-grid">{group.items.map(([slug, title], index) => <Link key={slug} href={`/products/${group.id}/${slug}`}><img src={productImage(slug, group.hero)} alt="" /><div><b>{String(index + 1).padStart(2, '0')}</b><h3>{title}</h3><span>상세 보기 →</span></div></Link>)}</div></section>)}</section></main>;
+  return <main className="products-page"><section className="catalog-hero"><div><p>BMHF PRODUCT SYSTEMS</p><h1>제품 형상과 생산 조건에 맞춘<br />고주파 장비 시스템</h1><span>열처리, 브레이징, 가열기 제품군을 바탕으로 전원·코일·냉각·지그·자동화를 통합 설계합니다.</span><a href="#heat-treatment">제품군 살펴보기</a></div><img src="/assets/images/hero-solutions-integrated.png" alt="고주파 자동화 시스템" /></section><section className="catalog-main"><nav className="catalog-tabs">{productGroups.map((group, index) => <a key={group.id} href={`#${group.id}`}><b>0{index + 1}</b><strong>{group.label}</strong><span>{group.en}</span></a>)}</nav>{productGroups.map((group) => <section className="catalog-group" id={group.id} key={group.id}><header><div><p>{group.en.toUpperCase()}</p><h2>{group.label} 제품군</h2></div><span>{group.description}</span></header><div className="catalog-list">{group.items.map(([slug, title], index) => <Link className="catalog-card" key={slug} href={`/products/${group.id}/${slug}`}><figure><img src={productImage(slug, group.hero)} alt="" /><b>{String(index + 1).padStart(2, '0')}</b></figure><div><p>{group.en.toUpperCase()} SYSTEM · {String(index + 1).padStart(2, '0')}</p><h3>{title}</h3><span>워크피스 형상, 목표 품질, 생산량을 기준으로 시스템 사양을 검토합니다.</span><ul>{tagsByGroup[group.id].map((tag) => <li key={tag}>{tag}</li>)}</ul><em>제품 상세 보기 →</em></div></Link>)}</div></section>)}</section></main>;
 }
