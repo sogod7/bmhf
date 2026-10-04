@@ -67,7 +67,7 @@ if (isHome && !document.querySelector('[data-ai-support-launcher]')) {
   launcher.dataset.aiSupportLauncher = 'true';
   launcher.className = 'ai-support-launcher';
   launcher.setAttribute('aria-label', 'AI 고객센터 열기');
-  launcher.innerHTML = '<span class="ai-support-pulse"></span><img class="ai-support-horse" src="/assets/images/ai-horse.svg" alt="" /><span class="ai-support-label">AI 고객센터<small>공정 상담</small></span>';
+  launcher.innerHTML = '<span class="ai-support-pulse"></span><span class="ai-support-horse" aria-hidden="true"></span><span class="ai-support-label">AI 고객센터<small>공정 상담</small></span>';
   document.body.appendChild(launcher);
 }
 const header = document.querySelector('[data-header]');

@@ -7,7 +7,7 @@ const welcome = '안녕하세요. 백마고주파 AI 고객센터입니다. 어�
 const quickQuestions = ['고주파 열처리 상담', '브레이징 장비 문의', '맞춤 코일 제작', '자동화 시스템 상담'];
 
 function HorseMark({ small = false }) {
-  return <img className={`horse-mark${small ? ' small' : ''}`} src="/assets/images/ai-horse.svg" alt="" aria-hidden="true" />;
+  return <span className={`horse-mark${small ? ' small' : ''}`} aria-hidden="true" />;
 }
 
 export default function SupportPage() {
