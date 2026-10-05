@@ -6,6 +6,7 @@ import './language.css';
 import LanguageSwitch from './LanguageSwitch';
 import GlobalHeader from './GlobalHeader';
 import GlobalAiSupport from './GlobalAiSupport';
+import GlobalFooter from './GlobalFooter';
 
 export const metadata = {
   title: 'BMHF | Induction System Engineering',
@@ -13,5 +14,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body><GlobalHeader />{children}<GlobalAiSupport /><LanguageSwitch /></body></html>;
+  return <html lang="en"><body><GlobalHeader />{children}<GlobalFooter /><GlobalAiSupport /><LanguageSwitch /></body></html>;
 }
