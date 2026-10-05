@@ -1,9 +1,17 @@
 
 const toggle = document.querySelector('[data-menu-toggle]');
 const panel = document.querySelector('[data-mobile-panel]');
+if (toggle) {
+  while (toggle.querySelectorAll('span').length < 3) toggle.appendChild(document.createElement('span'));
+  toggle.setAttribute('aria-expanded', 'false');
+}
 if (toggle && panel) {
-  toggle.addEventListener('click', () => panel.classList.toggle('is-open'));
-  panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => panel.classList.remove('is-open')));
+  toggle.addEventListener('click', () => {
+    const open = panel.classList.toggle('is-open');
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { panel.classList.remove('is-open'); toggle.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }));
 }
 
 const footerBottom = document.querySelector('.footer-bottom');
