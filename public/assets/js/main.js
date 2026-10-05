@@ -17,7 +17,7 @@ if (footerBottom && !footerBottom.querySelector('[data-admin-login]')) {
 }
 
 const desktopNav = document.querySelector('.desktop-nav');
-const globalNavigation = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['제품소개', '/products'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+const globalNavigation = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['제품소개', '/products'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['공지사항', '/notices'], ['문의', '/contact.html']];
 const languageVisible = !document.cookie.split('; ').includes('bmhf_language_visible=off');
 if (desktopNav) desktopNav.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
 const brand = document.querySelector('.header-inner .brand');
@@ -25,7 +25,7 @@ if (brand && !document.querySelector('[data-brand-slogan]')) {
   const slogan = document.createElement('span');
   slogan.dataset.brandSlogan = 'true';
   slogan.className = 'brand-slogan';
-  slogan.innerHTML = '<span class="brand-authority">고주파 시스템의 권위</span><span class="brand-korean">주식회사 백마고주파</span><span class="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span class="brand-initial">BMHF</span>';
+  slogan.innerHTML = '<span class="brand-authority" style="color:#123b6d">고주파 시스템의 권위</span><span class="brand-korean">주식회사 백마고주파</span><span class="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span class="brand-initial">BMHF</span>';
   brand.insertAdjacentElement('afterend', slogan);
 }
 if (languageVisible && desktopNav && !document.querySelector('[data-language-switch]')) {
@@ -90,4 +90,19 @@ if (form) {
     ];
     if (note) note.textContent = lines.join(' / ');
   });
+}
+const homeHero = document.querySelector('.hero-home');
+if (homeHero && !document.querySelector('[data-home-notices]')) {
+  const defaults = [{ title: 'BMHF 고주파 시스템 기술 상담 안내', date: '2026.10.05', pinned: true, visible: true }, { title: '제품소개 및 영상자료 업데이트', date: '2026.10.01', pinned: false, visible: true }];
+  let notices = defaults;
+  try { const saved = localStorage.getItem('bmhf-notice-draft'); if (saved) notices = JSON.parse(saved); } catch {}
+  notices = notices.filter((item) => item.visible).sort((a, b) => Number(b.pinned) - Number(a.pinned) || b.date.localeCompare(a.date)).slice(0, 3);
+  const section = document.createElement('section');
+  section.className = 'home-notice-section'; section.dataset.homeNotices = 'true';
+  const container = document.createElement('div'); container.className = 'container home-notice-inner';
+  const heading = document.createElement('div'); heading.innerHTML = '<p class="eyebrow blue">Notice</p><h2>공지사항</h2>'; container.appendChild(heading);
+  const list = document.createElement('div'); list.className = 'home-notice-list';
+  notices.forEach((notice) => { const link = document.createElement('a'); link.href = '/notices'; const title = document.createElement('strong'); title.textContent = notice.title; const meta = document.createElement('span'); meta.textContent = `${notice.pinned ? '고정 · ' : ''}${notice.date}`; link.append(title, meta); list.appendChild(link); });
+  container.appendChild(list); const more = document.createElement('a'); more.className = 'text-link'; more.href = '/notices'; more.textContent = '공지사항 전체보기 →'; container.appendChild(more); section.appendChild(container);
+  document.querySelector('.cta-section')?.before(section);
 }

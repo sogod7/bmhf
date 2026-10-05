@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import './global-header.css';
 
-const items = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['제품소개', '/products'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['문의', '/contact.html']];
+const items = [['회사소개', '/company.html'], ['보유기술', '/technology.html'], ['제품소개', '/products'], ['솔루션', '/solutions.html'], ['적용분야', '/applications.html'], ['프로젝트', '/projects.html'], ['영상자료', '/videos'], ['공지사항', '/notices'], ['문의', '/contact.html']];
 
 export default function GlobalHeader() {
   const path = usePathname();
