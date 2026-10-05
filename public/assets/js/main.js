@@ -25,7 +25,7 @@ if (brand && !document.querySelector('[data-brand-slogan]')) {
   const slogan = document.createElement('span');
   slogan.dataset.brandSlogan = 'true';
   slogan.className = 'brand-slogan';
-  slogan.innerHTML = '<span>주식회사 백마고주파</span><span class="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span class="brand-initial">BMHF</span>';
+  slogan.innerHTML = '<span class="brand-authority">고주파 시스템의 권위</span><span class="brand-korean">주식회사 백마고주파</span><span class="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span class="brand-initial">BMHF</span>';
   brand.insertAdjacentElement('afterend', slogan);
 }
 if (languageVisible && desktopNav && !document.querySelector('[data-language-switch]')) {
