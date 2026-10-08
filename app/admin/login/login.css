@@ -1,3 +1,57 @@
-.admin-login{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(145deg,#eef2f5,#dfe5eb)}
-.admin-login>section{width:min(100%,430px);padding:38px;border-radius:24px;background:#fff;border:1px solid #dbe2e8;box-shadow:0 22px 60px rgba(11,24,37,.14)}
-.admin-login .brand{display:inline-block;margin-bottom:36px}.admin-login h1{margin:8px 0;font-size:32px;letter-spacing:-.05em}.admin-login>section>p:not(.kicker){margin:0 0 25px;color:var(--muted);font-size:14px}.admin-login form{display:grid;gap:14px}.admin-login label{display:grid;gap:7px;color:#405164;font-size:13px;font-weight:800}.admin-login input{border:1px solid #cfd8e1;border-radius:12px;padding:13px 14px;font:inherit}.admin-login input:focus{outline:0;border-color:#172331;box-shadow:0 0 0 4px rgba(23,35,49,.1)}.admin-login .button{margin-top:6px;border:0;cursor:pointer;text-align:center}.login-error{margin:0;color:#be3444;font-size:13px}.back-link{display:inline-block;margin-top:26px;font-size:13px;color:#66788a}
+.admin-login{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(420px,.95fr);background:#f3f6f9}
+.login-visual{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:44px 56px;overflow:hidden;color:#fff;background:linear-gradient(140deg,rgba(5,20,42,.95),rgba(9,44,88,.82)),url('/assets/images/hero-induction-production.png') center/cover}
+.login-visual:after{content:'';position:absolute;inset:auto -10% -30% auto;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(77,141,245,.28),transparent 65%);pointer-events:none}
+.login-logo{position:relative;z-index:1;display:inline-flex;width:max-content;padding:8px 12px;border-radius:12px;background:#fff}
+.login-logo img{display:block;width:170px;height:46px;object-fit:contain}
+.login-visual-copy{position:relative;z-index:1;max-width:460px}
+.login-visual .kicker{margin:0;color:#9bc7ff}
+.login-visual h2{margin:14px 0 26px;font-size:clamp(30px,3vw,42px);line-height:1.2;letter-spacing:-.05em}
+.login-visual ul{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.login-visual li{display:flex;align-items:center;gap:11px;color:#d4e3f5;font-size:15px}
+.login-visual li:before{content:'';flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:rgba(77,141,245,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.6L14 7.6' fill='none' stroke='%239bc7ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.login-visual small{position:relative;z-index:1;color:#8ea6c2;font-size:12px;letter-spacing:.06em}
+.login-panel{display:grid;place-items:center;padding:40px 28px}
+.login-card{width:min(100%,400px)}
+.login-card .kicker{margin:0}
+.login-card h1{margin:8px 0 8px;font-size:32px;letter-spacing:-.05em;color:#0b1f38}
+.login-lead{margin:0 0 28px;color:var(--muted);font-size:14px;line-height:1.6}
+.admin-login form{display:grid;gap:16px}
+.admin-login label{display:grid;gap:7px;color:#405164;font-size:13px;font-weight:700}
+.admin-login input[type=email],.admin-login input[type=password],.admin-login input[type=text]{width:100%;min-height:48px;border:1px solid #cfd8e1;border-radius:12px;padding:12px 14px;background:#fff;font:inherit;font-size:15px;font-weight:400;color:#132538;transition:border-color .15s,box-shadow .15s}
+.admin-login input::placeholder{color:#9aa8b6}
+.admin-login input:focus{outline:0;border-color:#1265d8;box-shadow:0 0 0 4px rgba(18,101,216,.12)}
+.login-password{position:relative;display:block}
+.login-password input{padding-right:76px!important}
+.login-password button{position:absolute;right:6px;top:50%;transform:translateY(-50%);min-width:58px;padding:8px 10px;border:0;border-radius:9px;background:#eef3f8;color:#3c536b;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.login-password button:hover{background:#e1eaf3}
+.login-hint{margin:-8px 0 0;color:#b26a00;font-size:12px;font-weight:700}
+.admin-login .login-remember{display:flex;align-items:center;gap:8px;color:#55687b;font-size:13px;font-weight:500;cursor:pointer}
+.login-remember input{width:17px;height:17px;margin:0;accent-color:#1265d8}
+.login-error{margin:0;padding:11px 13px;border-radius:10px;background:#fdecee;color:#b32a3a;font-size:13px;line-height:1.5}
+.login-submit{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;margin-top:4px;border:0;border-radius:12px;background:linear-gradient(135deg,#1265d8,#4d8df5);color:#fff;font:inherit;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 10px 22px rgba(18,101,216,.24);transition:transform .15s,box-shadow .15s}
+.login-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 14px 28px rgba(18,101,216,.3)}
+.login-submit:disabled{opacity:.75;cursor:wait}
+.login-spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:loginSpin .7s linear infinite}
+@keyframes loginSpin{to{transform:rotate(360deg)}}
+.back-link{display:inline-block;margin-top:24px;font-size:13px;color:#66788a}
+.back-link:hover{color:#1265d8}
+@media(max-width:900px){
+  .admin-login{grid-template-columns:1fr;grid-template-rows:auto 1fr;background:#fff}
+  .login-visual{flex-direction:row;align-items:center;gap:12px;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top))}
+  .login-visual:after,.login-visual small,.login-visual h2,.login-visual ul{display:none}
+  .login-logo{padding:5px 8px;border-radius:9px}
+  .login-logo img{width:118px;height:32px}
+  .login-visual-copy{margin-left:auto}
+  .login-visual .kicker{font-size:10px;letter-spacing:.12em}
+  .login-panel{place-items:start center;padding:28px 18px calc(24px + env(safe-area-inset-bottom))}
+  .login-card{width:min(100%,420px)}
+}
+@media(max-width:720px){
+  .login-card h1{font-size:26px;margin:6px 0}
+  .login-lead{margin-bottom:20px;font-size:13px}
+  .admin-login form{gap:13px}
+  .admin-login input[type=email],.admin-login input[type=password],.admin-login input[type=text]{min-height:46px;font-size:16px}
+  .login-submit{min-height:48px}
+  .back-link{margin-top:18px}
+}
+@media(prefers-reduced-motion:reduce){.login-spinner{animation-duration:1.6s}}
