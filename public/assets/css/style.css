@@ -186,3 +186,18 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
   .process-step h3{margin-bottom:3px;font-size:16px}
   .process-step p{font-size:13px;line-height:1.55}
 }
+/* Show the animated brand slogan beside the logo once the desktop nav collapses. */
+@media(max-width:1040px){
+  .brand-slogan{display:inline-grid;flex:1 1 auto;min-width:0;width:auto;max-width:226px}
+}
+@media(max-width:720px){
+  .brand-slogan{height:24px;margin-left:-6px;font-size:11.5px;letter-spacing:.04em}
+  .brand-slogan>span{top:3px}
+  .brand-slogan .brand-en{font-size:11.5px;letter-spacing:.02em}
+  .brand-slogan .brand-initial{font-size:14px}
+}
+@media(max-width:360px){
+  .brand img{width:120px!important;height:36px!important}
+  .brand-slogan{font-size:10.5px}
+  .brand-slogan .brand-en{font-size:10.5px;letter-spacing:0}
+}
