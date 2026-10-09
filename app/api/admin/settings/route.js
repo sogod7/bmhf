@@ -3,9 +3,15 @@ import { getSettings, logActivity, updateSetting } from '../../../../lib/site-se
 
 export const GET = adminRoute(async () => Response.json({ settings: await getSettings() }));
 
+const describe = (key, value) => {
+  if (key === 'language_visible') return `다국어 전환 메뉴 ${value ? '노출' : '숨김'}`;
+  if (key === 'site_banner') return value?.enabled ? `상단 안내 배너 게시: ${String(value.text || '').slice(0, 40)}` : '상단 안내 배너 내림';
+  return `설정 변경: ${key}`;
+};
+
 export const PATCH = adminRoute(async (request) => {
   const { key, value } = await readJson(request);
   const settings = await updateSetting(key, value);
-  await logActivity('settings.update', key === 'language_visible' ? `다국어 전환 메뉴 ${value ? '노출' : '숨김'}` : `설정 변경: ${key}`);
+  await logActivity('settings.update', describe(key, settings[key]));
   return Response.json({ settings });
 });

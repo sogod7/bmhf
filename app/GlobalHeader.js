@@ -137,14 +137,17 @@ const headerMenuData = {
   ]
 };
 
+const BANNER_KEY = 'bmhf_banner_dismissed';
+
 export default function GlobalHeader() {
   const path = usePathname();
   const [languageVisible, setLanguageVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(2); // Default to Products
+  const [banner, setBanner] = useState(null);
   useEffect(() => {
     let active = true;
-    fetch('/api/settings').then((response) => response.json()).then((settings) => { if (active) setLanguageVisible(settings.languageVisible !== false); }).catch(() => {});
+    fetch('/api/settings').then((response) => response.json()).then((settings) => { if (!active) return; setLanguageVisible(settings.languageVisible !== false); let dismissed = ''; try { dismissed = localStorage.getItem(BANNER_KEY) || ''; } catch {} if (settings.banner && settings.banner.id !== dismissed) setBanner(settings.banner); }).catch(() => {});
     return () => { active = false; };
   }, []);
   useEffect(() => { setMenuOpen(false); }, [path]);
@@ -162,7 +165,9 @@ export default function GlobalHeader() {
     setExpandedIndex((prev) => (prev === index ? -1 : index));
   };
 
-  return <header className="global-gnb">
+  const dismissBanner = () => { try { localStorage.setItem(BANNER_KEY, banner.id); } catch {} setBanner(null); };
+
+  return <>{banner && <div className="site-banner" role="region" aria-label={english ? 'Announcement' : '안내'}><span>{banner.text}</span>{banner.link && <a href={banner.link}>{english ? 'Learn more →' : '자세히 보기 →'}</a>}<button type="button" onClick={dismissBanner} aria-label={english ? 'Close announcement' : '안내 닫기'}>×</button></div>}<header className="global-gnb">
     <a href={homePath} className="global-logo" aria-label="BMHF home"><img src="/assets/images/bmhf-logo-official.png" alt="BMHF Baek-Ma High Frequency" /></a>
     <span className="app-brand-slogan global-slogan" aria-hidden="true"><span className="brand-authority">고주파 시스템의 권위</span><span className="brand-korean">주식회사 백마고주파</span><span className="brand-en"><b>B</b>AEK-<b>M</b>A <b>H</b>igh <b>F</b>requency</span><span className="brand-initial">BMHF</span></span>
     <nav className="global-desktop-nav" aria-label="주요 메뉴">{items.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
@@ -205,5 +210,5 @@ export default function GlobalHeader() {
         </a>
       </div>
     </div>
-  </header>;
+  </header></>;
 }

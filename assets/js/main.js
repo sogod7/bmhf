@@ -179,7 +179,23 @@ if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
 // The admin console can hide the language switch for every visitor.
 fetch('/api/settings').then((response) => response.json()).then((settings) => {
   if (settings.languageVisible === false) document.querySelectorAll('[data-language-switch]').forEach((element) => element.remove());
+  showSiteBanner(settings.banner);
 }).catch(() => {});
+// Site-wide announcement strip; a visitor's dismissal sticks until the banner content changes.
+function showSiteBanner(banner) {
+  const siteHeader = document.querySelector('[data-header]');
+  let dismissed = '';
+  try { dismissed = localStorage.getItem('bmhf_banner_dismissed') || ''; } catch {}
+  if (!banner || !siteHeader || banner.id === dismissed || document.querySelector('.site-banner')) return;
+  const strip = document.createElement('div');
+  strip.className = 'site-banner'; strip.setAttribute('role', 'region'); strip.setAttribute('aria-label', '안내');
+  const text = document.createElement('span'); text.textContent = banner.text; strip.appendChild(text);
+  if (banner.link) { const link = document.createElement('a'); link.href = banner.link; link.textContent = '자세히 보기 →'; strip.appendChild(link); }
+  const close = document.createElement('button'); close.type = 'button'; close.setAttribute('aria-label', '안내 닫기'); close.textContent = '×';
+  close.addEventListener('click', () => { try { localStorage.setItem('bmhf_banner_dismissed', banner.id); } catch {} strip.remove(); });
+  strip.appendChild(close);
+  siteHeader.before(strip);
+}
 
 const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
 const heroVideos = [...document.querySelectorAll('[data-hero-video]')];

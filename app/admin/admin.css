@@ -234,3 +234,27 @@ textarea.ac-input{resize:vertical;line-height:1.6}
 }
 .ac-segment button.is-active.tone-amber{background:#fff1d6;color:#8a5300}.ac-segment button.is-active.tone-blue{background:#e3eefe;color:#174f9f}.ac-segment button.is-active.tone-green{background:#dcf5e8;color:#16683f}.ac-segment button.is-active.tone-gray{background:#fff;color:#4f6072}
 .ac-setting .ac-switch{flex:0 0 auto;white-space:nowrap}
+/* Inquiry list selection, bulk actions and quick contact */
+.ac-select{appearance:auto;padding-right:8px}
+.ac-inquiry-list li{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:2px}
+.ac-row-check,.ac-check-all input{width:17px;height:17px;margin:14px 0 0 8px;accent-color:var(--ac-blue);cursor:pointer}
+.ac-check-all{display:flex;align-items:center;gap:8px;padding:6px 8px 8px;border-bottom:1px solid #eef2f6;color:var(--ac-muted);font-size:12.5px;cursor:pointer}
+.ac-check-all input{margin:0}
+.ac-inquiry-list li.is-new strong{position:relative;padding-left:12px}
+.ac-inquiry-list li.is-new strong:before{content:'';position:absolute;left:0;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#f2a93b}
+.ac-bulkbar{position:sticky;top:12px;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border:1px solid #b6d0f5;border-radius:12px;background:#eef5ff;box-shadow:0 8px 20px rgba(10,40,80,.1)}
+.ac-bulkbar strong{margin-right:auto;color:#0d4ea8}
+.ac-more{width:100%;margin-top:4px;padding:11px;border:0;border-top:1px solid #eef2f6;background:transparent;color:var(--ac-blue);font-weight:700;cursor:pointer}
+.ac-more:hover{background:#f4f7fa}
+.ac-quick{display:flex;flex-wrap:wrap;gap:6px}
+@media(max-width:720px){
+  .ac-toolbar-side:has(.ac-search){grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ac-toolbar-side .ac-search{grid-column:1/-1}
+  .ac-bulkbar{top:54px}
+  .ac-bulkbar strong{width:100%}
+  .ac-quick .ac-btn{flex:1}
+}
+.ac-gap{margin:-6px 0 14px}
+.ac-banner-preview{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;padding:9px 40px;border-radius:10px;background:#0b356f;color:#fff;font-weight:500;text-align:center}
+.ac-banner-preview u{color:#ffd88a;font-weight:700}
+.ac-banner-preview b{position:absolute;right:14px;color:#cfe0f5;font-size:18px}

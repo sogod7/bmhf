@@ -1,1 +1,40 @@
-.bmhf-video-launch{position:relative;display:block;border:0;padding:0;overflow:hidden;background:#0a192b;cursor:pointer;text-align:left}.bmhf-video-launch img{width:100%;height:100%;object-fit:cover}.bmhf-video-launch:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(3,10,18,.42))}.bmhf-video-launch i,.bmhf-video-launch b{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%)}.bmhf-video-launch i{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:#fff;color:#103867;font-style:normal;font-size:21px;padding-left:3px;box-shadow:0 9px 24px rgba(0,0,0,.25)}.bmhf-video-launch b{top:calc(50% + 51px);color:#fff;font-size:13px;white-space:nowrap}.bmhf-video-modal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:32px;background:rgba(2,11,23,.9)}.bmhf-video-player{width:min(1120px,100%);background:#000;box-shadow:0 28px 80px rgba(0,0,0,.5)}.bmhf-video-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 15px;background:#0c223e;color:#fff;font-size:13px}.bmhf-video-toolbar strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bmhf-video-toolbar div{display:flex;gap:8px}.bmhf-video-toolbar button{border:1px solid rgba(255,255,255,.32);border-radius:6px;padding:7px 10px;background:transparent;color:#fff;font-size:12px;cursor:pointer}.bmhf-video-player iframe{display:block;width:100%;aspect-ratio:16/9;border:0}@media(max-width:720px){.bmhf-video-modal{padding:0}.bmhf-video-player{width:100%}.bmhf-video-toolbar{padding:10px}.bmhf-video-toolbar strong{font-size:12px}.bmhf-video-toolbar button{padding:6px 7px;font-size:11px}}
+.bmhf-video-launch{position:relative;display:block;border:0;padding:0;overflow:hidden;background:#0a192b;cursor:pointer;text-align:left}
+.bmhf-video-launch img{width:100%;height:100%;object-fit:cover}
+.bmhf-video-launch:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(3,10,18,.42))}
+.bmhf-video-launch i,.bmhf-video-launch b{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%)}
+.bmhf-video-launch i{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:#fff;color:#103867;font-style:normal;font-size:21px;padding-left:3px;box-shadow:0 9px 24px rgba(0,0,0,.25)}
+.bmhf-video-launch b{top:calc(50% + 51px);color:#fff;font-size:13px;white-space:nowrap}
+
+/* Modal is portaled to <body>, so card hover transforms cannot trap it. */
+.bmhf-video-modal{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;background:rgba(2,11,23,.92);animation:bmhfVideoIn .18s ease}
+.bmhf-video-player{width:min(1120px,100%);overflow:hidden;border-radius:12px;background:#000;box-shadow:0 28px 80px rgba(0,0,0,.5)}
+.bmhf-video-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px 10px 16px;background:#0c223e;color:#fff;font-size:14px}
+.bmhf-video-toolbar strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bmhf-video-toolbar div{display:flex;flex:0 0 auto;gap:8px}
+.bmhf-video-toolbar button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.bmhf-video-toolbar button:hover,.bmhf-video-toolbar button:focus-visible{background:rgba(255,255,255,.16);outline:0}
+.bmhf-video-toolbar button.is-close{border-color:#4d8df5;background:#1265d8}
+.bmhf-video-toolbar button span{font-size:15px;line-height:1}
+.bmhf-video-frame{position:relative;aspect-ratio:16/9;background:#000}
+.bmhf-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bmhf-video-frame a{position:absolute;inset:0;display:grid;place-items:center;color:#fff}
+.bmhf-video-hint{margin:0;color:#9fb4cc;font-size:12.5px}
+/* Real fullscreen (Android/desktop) and the iPhone fallback both fill the screen. */
+.bmhf-video-player:fullscreen{display:flex;flex-direction:column;width:100%;height:100%;border-radius:0}
+.bmhf-video-player:fullscreen .bmhf-video-frame{flex:1;aspect-ratio:auto}
+.bmhf-video-modal.is-pseudo-fullscreen{padding:0;background:#000}
+.bmhf-video-modal.is-pseudo-fullscreen .bmhf-video-player{display:flex;flex-direction:column;width:100%;height:100%;border-radius:0}
+.bmhf-video-modal.is-pseudo-fullscreen .bmhf-video-toolbar{padding-top:max(8px,env(safe-area-inset-top));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.bmhf-video-modal.is-pseudo-fullscreen .bmhf-video-frame{flex:1;aspect-ratio:auto;padding-bottom:env(safe-area-inset-bottom)}
+@keyframes bmhfVideoIn{from{opacity:0}}
+@media(max-width:720px){
+  .bmhf-video-modal{justify-content:center;padding:max(12px,env(safe-area-inset-top)) 0 max(12px,env(safe-area-inset-bottom))}
+  .bmhf-video-player{width:100%;border-radius:0}
+  .bmhf-video-toolbar{flex-wrap:wrap;gap:8px;padding:10px 12px}
+  .bmhf-video-toolbar strong{flex:1 1 100%;font-size:13.5px}
+  .bmhf-video-toolbar div{flex:1 1 100%}
+  .bmhf-video-toolbar button{flex:1;min-height:44px;font-size:14px}
+  .bmhf-video-modal.is-pseudo-fullscreen .bmhf-video-toolbar strong{display:none}
+  .bmhf-video-hint{padding:0 16px;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){.bmhf-video-modal{animation:none}}
