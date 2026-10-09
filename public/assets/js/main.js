@@ -43,15 +43,138 @@ if (desktopNav && !document.querySelector('[data-language-switch]')) {
   languages.querySelector('button').addEventListener('click', () => { const open = languages.classList.toggle('is-open'); languages.querySelector('button').setAttribute('aria-expanded', String(open)); });
   desktopNav.insertAdjacentElement('afterend', languages);
 }
+const mobileMenuData = [
+  {
+    label: '회사소개',
+    href: '/company.html',
+    items: [
+      { label: '회사소개 개요', href: '/company.html' },
+      { label: '기업개요 및 핵심가치', href: '/company.html#about' },
+      { label: '회사 정보 및 연혁', href: '/company.html#info' },
+      { label: '오시는 길 (본사/공장)', href: '/contact.html#map' }
+    ]
+  },
+  {
+    label: '보유기술',
+    href: '/technology.html',
+    items: [
+      { label: '보유기술 전체', href: '/technology.html' },
+      { label: 'RF 전원 & 임피던스 매칭', href: '/technology.html#rf-power' },
+      { label: '맞춤 인덕터 코일 & 지그', href: '/technology.html#coil-design' },
+      { label: '냉각 제어 & 신뢰성 검증', href: '/technology.html#cooling' }
+    ]
+  },
+  {
+    label: '제품소개',
+    href: '/products',
+    badge: '주요설비',
+    items: [
+      { label: '전체 설비 라인업', href: '/products' },
+      { label: '고주파 열처리·템퍼링 M/C', href: '/products#heat-treatment' },
+      { label: '고주파 브레이징 M/C', href: '/products#brazing' },
+      { label: '고주파 유도가열기 시스템', href: '/products#heating' }
+    ]
+  },
+  {
+    label: '적용분야',
+    href: '/applications.html',
+    items: [
+      { label: '적용분야 전체', href: '/applications.html' },
+      { label: '자동차 핵심 부품 열처리', href: '/applications.html#automotive' },
+      { label: '초경 공구 브레이징 접합', href: '/applications.html#tools' },
+      { label: '모터 케이스 & 산업기계 가열', href: '/applications.html#industrial' }
+    ]
+  },
+  {
+    label: '영상자료',
+    href: '/videos',
+    items: [
+      { label: '설비 가동 영상 전체', href: '/videos' }
+    ]
+  },
+  {
+    label: '공지사항',
+    href: '/notices',
+    items: [
+      { label: '공지사항 및 뉴스', href: '/notices' },
+      { label: '기술 자료실 (카탈로그 다운로드)', href: '/resources' }
+    ]
+  },
+  {
+    label: '문의',
+    href: '/contact.html',
+    items: [
+      { label: '온라인 견적 문의하기', href: '/contact.html' },
+      { label: 'AI 고객센터 (공정상담)', href: '/support' }
+    ]
+  }
+];
+
 const mobilePanel = document.querySelector('[data-mobile-panel]');
-if (mobilePanel) mobilePanel.innerHTML = globalNavigation.map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
+if (mobilePanel) {
+  mobilePanel.innerHTML = `
+    <div class="mobile-nav-accordion">
+      ${mobileMenuData.map((group, idx) => `
+        <div class="mobile-nav-group${idx === 2 ? ' is-expanded' : ''}" data-nav-group>
+          <div class="mobile-nav-row">
+            <a href="${group.href}" class="mobile-nav-title">
+              <span>${group.label}</span>
+              ${group.badge ? `<span class="mobile-nav-badge">${group.badge}</span>` : ''}
+            </a>
+            <button type="button" class="mobile-nav-toggle" aria-label="${group.label} 하위메뉴 열기/닫기" aria-expanded="${idx === 2 ? 'true' : 'false'}">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.25L7 9.25L11 5.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="mobile-nav-sub">
+            <div class="mobile-nav-sub-inner">
+              ${group.items.map(item => `
+                <a href="${item.href}" class="mobile-nav-sublink">
+                  <span class="sublink-dot" aria-hidden="true"></span>
+                  <span class="sublink-text">${item.label}</span>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="mobile-panel-footer">
+      <a class="mobile-panel-quote" href="/contact.html">
+        <span>견적 문의하기</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  `;
+
+  // Accordion toggle
+  mobilePanel.querySelectorAll('.mobile-nav-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const group = btn.closest('[data-nav-group]');
+      const open = group.classList.toggle('is-expanded');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  // Close panel on link click
+  mobilePanel.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link && toggle && panel) {
+      panel.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
   const languages = document.createElement('div');
   languages.dataset.languageSwitch = 'true';
   languages.className = 'language-switch mobile-language-switch';
   languages.innerHTML = '<button type="button" aria-expanded="false"><img src="/assets/images/flag-kr.svg" alt="" />한국어 <span>⌄</span></button><div class="language-menu"><a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a></div>';
   languages.querySelector('button').addEventListener('click', () => { const open = languages.classList.toggle('is-open'); languages.querySelector('button').setAttribute('aria-expanded', String(open)); });
-  mobilePanel.appendChild(languages);
+  const footerArea = mobilePanel.querySelector('.mobile-panel-footer') || mobilePanel;
+  footerArea.appendChild(languages);
 }
 // The admin console can hide the language switch for every visitor.
 fetch('/api/settings').then((response) => response.json()).then((settings) => {
