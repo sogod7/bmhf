@@ -196,8 +196,12 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
   flex-direction: column;
   gap: 4px !important; /* 떡볶이 메뉴 상하 간격 적당히 축소 */
   width: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
   height: 40px !important;
-  margin-left: auto;
+  margin-left: auto !important;
+  flex: 0 0 40px !important;
+  flex-shrink: 0 !important;
   padding: 0;
   border: 0;
   background: transparent;
@@ -211,14 +215,15 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
   background: rgba(30, 58, 95, 0.05);
 }
 .menu-toggle span {
-  display: block;
+  display: block !important;
   width: 22px !important;
   height: 2px !important;
   background: #17243b !important;
-  border-radius: 999px;
+  border-radius: 999px !important;
   margin: 0 !important;
   transition: transform .24s cubic-bezier(.4, 0, .2, 1), opacity .2s ease;
   transform-origin: center center !important;
+  flex-shrink: 0 !important;
 }
 
 /* 닫기 버튼: 완벽한 대칭 X (왜곡/꺾임 현상 완벽 해결) */
@@ -233,8 +238,11 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,inp
   transform: translateY(-6px) rotate(-45deg) !important;
 }
 
-/* Show the animated brand slogan beside the logo once desktop nav collapses. */
+/* Show the animated brand slogan and hamburger toggle once desktop nav collapses. */
 @media(max-width:1040px){
+  .menu-toggle {
+    display: flex !important;
+  }
   .header-inner {
     height: 64px !important;
     gap: 10px !important;
