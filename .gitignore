@@ -4,3 +4,7 @@ github_token.txt
 node_modules
 .env*
 !.env.example
+
+# Local fallback storage for the admin console (production uses Supabase)
+data/
+public/uploads/

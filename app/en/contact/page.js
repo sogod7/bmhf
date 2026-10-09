@@ -1,2 +1,8 @@
 import Link from 'next/link';
+export const metadata = {
+  title: 'Contact & Inquiry | BMHF Induction Systems',
+  description: 'Request a consultation or quote for induction heat treatment, brazing, heating equipment and custom coils.',
+  alternates: { canonical: '/en/contact' },
+};
+
 export default function EnglishContact() { return <main><header className="nav"><Link href="/en" className="brand">BMHF</Link><nav><a href="/index.html">한국어</a><Link href="/en">Home</Link></nav></header><section className="page-head"><p className="kicker dark">CONTACT</p><h1>Request a technical consultation.</h1><p>Tell us about the workpiece, material, process target, output and available installation space.</p><a className="button" href="mailto:master@bmhf.co.kr?subject=BMHF%20Technical%20Consultation">Email BMHF</a><p className="contact-line">Tel. +82 31 498 1292–4</p></section></main>; }

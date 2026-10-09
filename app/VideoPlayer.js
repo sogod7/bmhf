@@ -1,9 +1,8 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { youtubeId } from '../lib/admin-constants';
 import './video-player.css';
-
-function youtubeId(url) { try { return new URL(url).searchParams.get('v'); } catch { return null; } }
 
 export default function VideoPlayer({ videoUrl, title, thumbnail, className = '', label = '영상 재생' }) {
   const [open, setOpen] = useState(false); const player = useRef(null); const id = youtubeId(videoUrl);

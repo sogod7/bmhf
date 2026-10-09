@@ -1,2 +1,8 @@
 import Link from 'next/link';
+export const metadata = {
+  title: 'News & Notices | BMHF Induction Systems',
+  description: 'Latest news, product updates and announcements from Baek-Ma High Frequency.',
+  alternates: { canonical: '/en/board' },
+};
+
 export default function EnglishBoard() { return <main><header className="nav"><Link href="/en" className="brand">BMHF</Link><nav><Link href="/en">Home</Link><Link href="/en/resources">Resources</Link></nav></header><section className="page-head"><p className="kicker dark">NEWS</p><h1>News and notices.</h1><p>Published notices will appear here after the BMHF content database is connected.</p></section></main>; }
