@@ -142,12 +142,13 @@ const BANNER_KEY = 'bmhf_banner_dismissed';
 export default function GlobalHeader() {
   const path = usePathname();
   const [languageVisible, setLanguageVisible] = useState(true);
+  const [mobileLanguageVisible, setMobileLanguageVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(2); // Default to Products
   const [banner, setBanner] = useState(null);
   useEffect(() => {
     let active = true;
-    fetch('/api/settings').then((response) => response.json()).then((settings) => { if (!active) return; setLanguageVisible(settings.languageVisible !== false); let dismissed = ''; try { dismissed = localStorage.getItem(BANNER_KEY) || ''; } catch {} if (settings.banner && settings.banner.id !== dismissed) setBanner(settings.banner); }).catch(() => {});
+    fetch('/api/settings').then((response) => response.json()).then((settings) => { if (!active) return; setLanguageVisible(settings.languageVisible !== false); setMobileLanguageVisible(settings.languageMobileVisible !== false); let dismissed = ''; try { dismissed = localStorage.getItem(BANNER_KEY) || ''; } catch {} if (settings.banner && settings.banner.id !== dismissed) setBanner(settings.banner); }).catch(() => {});
     return () => { active = false; };
   }, []);
   useEffect(() => { setMenuOpen(false); }, [path]);
@@ -208,6 +209,7 @@ export default function GlobalHeader() {
           <span>{english ? 'Request a quote' : '견적 문의하기'}</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+        {mobileLanguageVisible && <div className="global-mobile-language" role="group" aria-label={english ? 'Language' : '언어 선택'}><a href={koreanPath(path)} className={english ? undefined : 'is-active'} aria-current={english ? undefined : 'true'}><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><Link href={englishPath(path)} className={english ? 'is-active' : undefined} aria-current={english ? 'true' : undefined} onClick={closeMenu}><img src="/assets/images/flag-us.svg" alt="" />English</Link></div>}
       </div>
     </div>
   </header></>;

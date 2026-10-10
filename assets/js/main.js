@@ -167,18 +167,21 @@ if (mobilePanel) {
     }
   });
 }
-if (mobilePanel && !mobilePanel.querySelector('[data-language-switch]')) {
+// Mobile menu: inline 한국어 | English buttons instead of a dropdown so nothing can overflow the screen.
+if (mobilePanel && !mobilePanel.querySelector('[data-mobile-language-switch]')) {
   const languages = document.createElement('div');
-  languages.dataset.languageSwitch = 'true';
-  languages.className = 'language-switch mobile-language-switch';
-  languages.innerHTML = '<button type="button" aria-expanded="false"><img src="/assets/images/flag-kr.svg" alt="" />한국어 <span>⌄</span></button><div class="language-menu"><a class="is-active" href="/index.html"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a></div>';
-  languages.querySelector('button').addEventListener('click', () => { const open = languages.classList.toggle('is-open'); languages.querySelector('button').setAttribute('aria-expanded', String(open)); });
+  languages.dataset.mobileLanguageSwitch = 'true';
+  languages.className = 'mobile-language-switch';
+  languages.setAttribute('role', 'group');
+  languages.setAttribute('aria-label', '언어 선택');
+  languages.innerHTML = '<a class="is-active" href="/index.html" aria-current="true"><img src="/assets/images/flag-kr.svg" alt="" />한국어</a><a href="/en"><img src="/assets/images/flag-us.svg" alt="" />English</a>';
   const footerArea = mobilePanel.querySelector('.mobile-panel-footer') || mobilePanel;
   footerArea.appendChild(languages);
 }
-// The admin console can hide the language switch for every visitor.
+// The admin console can hide the language switch separately for the desktop header and the mobile menu.
 fetch('/api/settings').then((response) => response.json()).then((settings) => {
   if (settings.languageVisible === false) document.querySelectorAll('[data-language-switch]').forEach((element) => element.remove());
+  if (settings.languageMobileVisible === false) document.querySelectorAll('[data-mobile-language-switch]').forEach((element) => element.remove());
   showSiteBanner(settings.banner);
 }).catch(() => {});
 // Site-wide announcement strip; a visitor's dismissal sticks until the banner content changes.

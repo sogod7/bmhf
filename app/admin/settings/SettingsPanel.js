@@ -29,8 +29,12 @@ export default function SettingsPanel({ initialSettings }) {
     <section className="ac-card">
       <div className="ac-card-head"><h2>사이트 설정</h2><span>저장 후 1분 이내에 모든 방문자에게 적용됩니다.</span></div>
       <div className="ac-setting">
-        <div><strong>다국어 전환 메뉴</strong><p>상단 메뉴의 한국어/English 전환 버튼을 표시합니다.</p></div>
-        <Toggle checked={settings.language_visible !== false} disabled={saving} onChange={(on) => change('language_visible', on, on ? '다국어 전환 메뉴를 표시합니다.' : '다국어 전환 메뉴를 숨겼습니다.')} label={settings.language_visible !== false ? '표시' : '숨김'} />
+        <div><strong>다국어 전환 버튼 (PC)</strong><p>PC 화면 상단 메뉴의 한국어/English 전환 버튼을 표시합니다.</p></div>
+        <Toggle checked={settings.language_visible !== false} disabled={saving} onChange={(on) => change('language_visible', on, on ? 'PC 다국어 버튼을 표시합니다.' : 'PC 다국어 버튼을 숨겼습니다.')} label={settings.language_visible !== false ? '표시' : '숨김'} />
+      </div>
+      <div className="ac-setting">
+        <div><strong>다국어 전환 버튼 (모바일)</strong><p>모바일 햄버거 메뉴 안의 한국어/English 버튼을 표시합니다.</p></div>
+        <Toggle checked={settings.language_mobile_visible !== false} disabled={saving} onChange={(on) => change('language_mobile_visible', on, on ? '모바일 다국어 버튼을 표시합니다.' : '모바일 다국어 버튼을 숨겼습니다.')} label={settings.language_mobile_visible !== false ? '표시' : '숨김'} />
       </div>
     </section>
 
