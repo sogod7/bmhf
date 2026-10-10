@@ -7,7 +7,8 @@ import { createHash } from 'node:crypto';
 const assets = ['assets/css/style.css', 'assets/js/main.js'];
 const pages = ['index', 'company', 'technology', 'solutions', 'applications', 'projects', 'contact'];
 
-const version = (file) => createHash('sha256').update(fs.readFileSync(`public/${file}`)).digest('hex').slice(0, 10);
+// Line endings are normalized so Windows (CRLF) and Vercel (LF) checkouts produce the same hash.
+const version = (file) => createHash('sha256').update(fs.readFileSync(`public/${file}`, 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 10);
 const stamps = assets.map((file) => [file, version(file)]);
 
 let changed = 0;
