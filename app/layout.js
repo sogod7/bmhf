@@ -77,15 +77,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: [
-      { url: '/assets/images/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.png', type: 'image/png' },
-      { url: '/favicon.ico' },
-    ],
-    shortcut: '/assets/images/favicon.svg',
-    apple: '/apple-touch-icon.png',
-  },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || '',
     other: {

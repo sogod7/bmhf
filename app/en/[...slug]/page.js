@@ -110,7 +110,7 @@ export default async function EnglishFallbackPage({ params }) {
         </section>
       )}
 
-      <footer className="footer" style={{ borderTop: '1px solid #e2e8f0', padding: '24px', textAlign: 'center', fontSize: '13px', color: '#64748b' }}>
+      <footer className="footer" style={{ borderTop: '1px solid #e2e8f0', padding: '24px', textAlign: 'center', fontSize: '13px', color: '#64748b' }}><img className="footer-logo--white" src="/assets/images/bmhf-logo-footer-white.png" alt="BMHF" />
         © BEAK-MA HIGH FREQUENCY (BMHF) · Tel: +82-31-498-1292 · <a href="mailto:master@bmhf.co.kr" style={{ color: '#0056b3' }}>master@bmhf.co.kr</a>
       </footer>
     </main>
