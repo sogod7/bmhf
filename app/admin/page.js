@@ -6,6 +6,7 @@ import { inquiryStats } from '../../lib/inquiries';
 import { listNotices } from '../../lib/notices-server';
 import { listResources } from '../../lib/resources';
 import { listActivity } from '../../lib/site-settings';
+import { visitorSnapshot } from '../../lib/analytics';
 import { listVideos } from '../../lib/videos-server';
 import AdminShell from './AdminShell';
 
@@ -13,13 +14,14 @@ const safe = (promise, fallback) => promise.catch(() => fallback);
 
 export default async function AdminDashboard() {
   if (!await hasAdminSession()) redirect('/admin/login?next=/admin');
-  const [stats, notices, videos, resources, activity] = await Promise.all([
+  const [stats, notices, videos, resources, activity, visits] = await Promise.all([
     safe(inquiryStats(), { total: 0, byStatus: {}, last7: 0, last30: 0, daily: [], recent: [] }),
-    safe(listNotices(), []), safe(listVideos(), []), safe(listResources(), []), listActivity(8),
+    safe(listNotices(), []), safe(listVideos(), []), safe(listResources(), []), listActivity(8), safe(visitorSnapshot(), null),
   ]);
   const maxDaily = Math.max(1, ...stats.daily.map((day) => day.count));
   const downloads = resources.reduce((sum, item) => sum + (item.download_count || 0), 0);
   const cards = [
+    ['오늘 방문자', visits ? visits.todayVisitors : '-', visits ? `7일 ${visits.weekVisitors.toLocaleString('ko-KR')}명 · 페이지뷰 ${visits.weekViews.toLocaleString('ko-KR')}` : '통계 테이블 준비 필요', '/admin/analytics'],
     ['신규 문의', stats.byStatus.new || 0, '확인 대기', '/admin/inquiries?status=new', 'is-accent'],
     ['진행 중 문의', stats.byStatus.in_progress || 0, `최근 7일 접수 ${stats.last7}건`, '/admin/inquiries?status=in_progress'],
     ['공개 공지', notices.filter((item) => item.visible).length, `고정 ${notices.filter((item) => item.pinned && item.visible).length}건 · 전체 ${notices.length}건`, '/admin/notices'],

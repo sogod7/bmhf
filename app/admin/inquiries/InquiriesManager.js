@@ -2,11 +2,14 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { INQUIRY_STATUSES, formatBytes, formatDateTime, inquiryStatusLabel } from '../../../lib/admin-constants';
+import { channelLabel, sourceLabel } from '../../../lib/analytics-labels';
 import { api, useToast } from '../admin-client';
 
 const PAGE_SIZE = 30;
 const PERIODS = [['all', '전체 기간', 0], ['today', '오늘', 0], ['7d', '최근 7일', 7], ['30d', '최근 30일', 30]];
 const toneOf = (status) => INQUIRY_STATUSES.find((item) => item.id === status)?.tone || 'gray';
+// '검색 · 네이버 (고주파 열처리)' style description of one attribution touch.
+const touchLabel = (touch) => touch ? [channelLabel(touch.channel), touch.source_name && sourceLabel(touch.source_name)].filter(Boolean).join(' · ') + (touch.search_term ? ` (${touch.search_term})` : '') : null;
 const kstDay = (value) => new Date(new Date(value).getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10);
 
 function inPeriod(createdAt, period) {
@@ -142,6 +145,7 @@ export default function InquiriesManager({ initialInquiries }) {
           <div><dt>이메일</dt><dd>{selected.email ? <a href={`mailto:${selected.email}`}>{selected.email}</a> : '-'}</dd></div>
           <div><dt>문의 분야</dt><dd>{selected.category}</dd></div>
           {selected.product_title && <div><dt>문의 제품</dt><dd>{selected.product_title}</dd></div>}
+          {selected.attribution?.session && <div><dt>유입 경로</dt><dd>{touchLabel(selected.attribution.session)}{selected.attribution.first && touchLabel(selected.attribution.first) !== touchLabel(selected.attribution.session) && <small className="ac-sub">첫 방문: {touchLabel(selected.attribution.first)}{selected.attribution.first.landing ? ` → ${selected.attribution.first.landing}` : ''}</small>}</dd></div>}
         </dl>
         <div className="ac-quick">
           <a className="ac-btn" href={`tel:${selected.phone}`}>전화 걸기</a>

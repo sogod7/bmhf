@@ -4,6 +4,7 @@ import { storageMode, storageProblem } from '../../lib/store';
 
 const NAV = [
   ['dashboard', '운영 현황', '/admin'],
+  ['analytics', '접속 통계', '/admin/analytics'],
   ['inquiries', '문의 관리', '/admin/inquiries'],
   ['notices', '공지사항', '/admin/notices'],
   ['videos', '영상 관리', '/admin/videos'],

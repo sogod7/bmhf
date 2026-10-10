@@ -193,6 +193,8 @@ fetch('/api/settings').then((response) => response.json()).then((settings) => {
   showSiteBanner(settings.banner);
   showNoticePopups(settings.popups);
 }).catch(() => {});
+// First-party visit statistics (shared with the app pages): see /bmhf-v.js.
+(() => { const script = document.createElement('script'); script.src = '/bmhf-v.js'; script.defer = true; document.head.appendChild(script); })();
 // Homepage notice popups chosen in the admin console; "오늘 하루 보지 않기" hides one until tomorrow (KST).
 function showNoticePopups(popups) {
   const path = window.location.pathname;
@@ -356,6 +358,8 @@ if (form) {
         payload.files = signed.uploads.map(({ path, name, size, type }) => ({ path, name, size, type }));
         if (submitBtn) submitBtn.textContent = '문의 접수 중입니다...';
       }
+      // Which channel brought this visitor (first visit + current session), for the admin's 접속 통계.
+      if (window.__bmhfAttribution) payload.attribution = window.__bmhfAttribution();
       const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

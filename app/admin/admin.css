@@ -62,7 +62,7 @@ textarea.ac-input{resize:vertical;line-height:1.6}
 .ac-stack{display:grid;gap:12px}
 
 /* Dashboard */
-.ac-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.ac-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .ac-stat{display:grid;gap:2px;padding:16px;border:1px solid var(--ac-line);border-radius:var(--ac-radius);background:#fff;transition:border-color .15s,transform .15s}
 .ac-stat:hover{border-color:#a9c4e6;transform:translateY(-1px)}
 .ac-stat span{color:var(--ac-muted);font-size:12.5px;font-weight:600}
@@ -258,3 +258,23 @@ textarea.ac-input{resize:vertical;line-height:1.6}
 .ac-banner-preview{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;padding:9px 40px;border-radius:10px;background:#0b356f;color:#fff;font-weight:500;text-align:center}
 .ac-banner-preview u{color:#ffd88a;font-weight:700}
 .ac-banner-preview b{position:absolute;right:14px;color:#cfe0f5;font-size:18px}
+/* Visitor analytics (접속 통계) */
+.ac-tabs a{flex:0 0 auto;padding:7px 12px;border-radius:9px;color:#4d5f72;font-weight:600}.ac-tabs a.is-active{background:#fff;color:var(--ac-navy);box-shadow:0 1px 4px rgba(10,30,55,.1)}
+.ac-sub{display:block;margin-top:2px;color:var(--ac-muted);font-size:12px}
+.an-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.an-tile:hover{transform:none;border-color:var(--ac-line)}.an-tile strong{font-size:26px}
+.an-delta{color:var(--ac-muted);font-size:12px;font-weight:600}.an-delta span{font-weight:400}.an-delta.is-up{color:#16683f}.an-delta.is-down{color:#b42318}
+.an-trend{display:grid;grid-template-columns:repeat(var(--an-cols),minmax(0,1fr));align-items:end;gap:3px;height:170px;margin-bottom:22px;padding-top:16px;border-bottom:1px solid var(--ac-line)}
+.an-col{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;outline:0}.an-col::before{content:"";position:absolute;inset:-16px 0 -22px;border-radius:6px}.an-col:hover::before,.an-col:focus-visible::before{background:rgba(18,101,216,.06)}
+.an-col i{position:relative;display:block;min-height:2px;border-radius:4px 4px 0 0;background:#2f73dc}.an-col:hover i,.an-col:focus-visible i{background:#1557b8}
+.an-col b{position:absolute;left:-6px;right:-6px;color:var(--ac-navy);font-size:10px;font-weight:600;text-align:center;pointer-events:none}
+.an-col span{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);color:var(--ac-muted);font-size:10px;white-space:nowrap}
+.an-rank{display:grid;gap:4px;margin:0;padding:0;list-style:none}.an-rank li{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:34px;padding:6px 10px;border-radius:8px;overflow:hidden}
+.an-rank-bar{position:absolute;inset:0 auto 0 0;border-radius:8px;background:#e7f0fd}.an-rank li:hover .an-rank-bar{background:#d6e6fc}
+.an-rank-label{position:relative;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}.an-rank-label small{margin-left:8px;color:var(--ac-muted);font-weight:400;font-size:12px}
+.an-rank b{position:relative;color:var(--ac-navy);font-variant-numeric:tabular-nums}
+.an-table-wrap{overflow-x:auto}.an-table{width:100%;border-collapse:collapse;font-size:13px}.an-table th{padding:8px 10px;border-bottom:1px solid var(--ac-line);color:var(--ac-muted);font-size:12px;font-weight:600;text-align:left;white-space:nowrap}
+.an-table td{padding:9px 10px;border-bottom:1px solid #eef2f6;vertical-align:middle}.an-table td small{color:var(--ac-muted)}.an-table .is-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.an-table tbody tr:hover{background:#f7f9fc}
+.an-share{display:inline-block;width:110px;height:6px;margin-right:8px;border-radius:3px;background:#edf2f7;vertical-align:middle;overflow:hidden}.an-share i{display:block;height:100%;border-radius:3px;background:#2f73dc}
+@media(max-width:1200px){.an-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.an-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.an-trend{gap:2px;height:140px}.an-col b{display:none}.an-share{width:60px}.an-table{font-size:12.5px}}
+.ac-grid-2>*,.ac-main>*{min-width:0}.an-table-wrap{max-width:100%}

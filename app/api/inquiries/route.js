@@ -1,3 +1,4 @@
+import { classify } from '../../../lib/analytics';
 import { createInquiry } from '../../../lib/inquiries';
 import { allowRequest, clientIp } from '../../../lib/rate-limit';
 import { logActivity } from '../../../lib/site-settings';
@@ -29,6 +30,19 @@ async function notify(inquiry, origin) {
   }).catch((error) => console.error('Inquiry notification failed:', error));
 }
 
+// Channel that brought the visitor (first visit and current session), classified like page views.
+function attributionOf(input, request) {
+  if (!input || typeof input !== 'object') return null;
+  const siteHost = (request.headers.get('host') || '').toLowerCase().replace(/^www\./, '').replace(/:\d+$/, '');
+  const touch = (value) => {
+    if (!value || typeof value !== 'object') return null;
+    const { channel, source_name, search_term, utm_campaign } = classify({ url: String(value.u || '/').slice(0, 1000), referrer: String(value.r || '').slice(0, 1000), siteHost });
+    const at = Number(value.at);
+    return { channel, source_name, search_term, utm_campaign, landing: String(value.u || '/').split('?')[0].slice(0, 300), at: Number.isFinite(at) && at > 0 ? new Date(at).toISOString() : null };
+  };
+  return { first: touch(input.first), session: touch(input.session) };
+}
+
 export async function POST(request) {
   if (!allowRequest(`inquiry:${clientIp(request)}`, 6)) return Response.json({ success: false, error: '너무 많은 요청입니다. 잠시 후 다시 시도해 주세요.' }, { status: 429 });
   if (!isStorageWritable()) return Response.json({ success: false, error: '온라인 문의 접수 준비 중입니다. 전화(031-498-1292) 또는 이메일(master@bmhf.co.kr)로 문의해 주시기 바랍니다.' }, { status: 503 });
@@ -47,7 +61,7 @@ export async function POST(request) {
 
     const inquiry = await createInquiry({
       company, name, phone, email, category: text(body.category, 60), message: text(body.message, 5000),
-      productSlug: text(body.productSlug, 120), productTitle: text(body.productTitle, 200), locale: body.locale, files, ip: clientIp(request),
+      productSlug: text(body.productSlug, 120), productTitle: text(body.productTitle, 200), locale: body.locale, files, ip: clientIp(request), attribution: attributionOf(body.attribution, request),
     });
     await logActivity('inquiry.create', `새 문의 접수: ${company}`);
     await notify(inquiry, new URL(request.url).origin);

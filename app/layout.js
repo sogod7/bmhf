@@ -9,6 +9,7 @@ import GlobalHeader from './GlobalHeader';
 import GlobalAiSupport from './GlobalAiSupport';
 import GlobalFooter from './GlobalFooter';
 import PageLoader from './PageLoader';
+import VisitTracker from './VisitTracker';
 
 export const metadata = {
   metadataBase: new URL('https://bmhf.co.kr'),
@@ -123,6 +124,7 @@ export default function RootLayout({ children }) {
         <GlobalFooter />
         <GlobalAiSupport />
         <LanguageSwitch />
+        <VisitTracker />
       </body>
     </html>
   );
