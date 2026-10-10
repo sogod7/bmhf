@@ -3,10 +3,12 @@ import './fonts.css';
 import './horse.css';
 import './brand.css';
 import './language.css';
+import './page-loader.css';
 import LanguageSwitch from './LanguageSwitch';
 import GlobalHeader from './GlobalHeader';
 import GlobalAiSupport from './GlobalAiSupport';
 import GlobalFooter from './GlobalFooter';
+import PageLoader from './PageLoader';
 
 export const metadata = {
   metadataBase: new URL('https://bmhf.co.kr'),
@@ -115,6 +117,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <PageLoader />
         <GlobalHeader />
         {children}
         <GlobalFooter />

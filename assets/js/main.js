@@ -1,3 +1,11 @@
+// Logo loading screen: hide it once the page has loaded (it only fades in if loading takes a moment).
+(() => {
+  const loader = document.querySelector('[data-page-loader]');
+  if (!loader) return;
+  const hide = () => loader.classList.add('is-done');
+  if (document.readyState === 'complete') hide(); else { window.addEventListener('load', hide, { once: true }); setTimeout(hide, 5000); }
+  window.addEventListener('pageshow', (event) => { if (event.persisted) hide(); });
+})();
 
 const toggle = document.querySelector('[data-menu-toggle]');
 const panel = document.querySelector('[data-mobile-panel]');
