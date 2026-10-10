@@ -205,11 +205,19 @@ function showNoticePopups(popups) {
     if (!popup) return;
     const overlay = document.createElement('div');
     overlay.className = 'notice-popup';
-    overlay.innerHTML = '<div class="notice-popup-box" role="dialog" aria-modal="true" aria-labelledby="notice-popup-title"><div class="notice-popup-head"><span></span><button type="button" class="notice-popup-x" aria-label="닫기">×</button></div><h2 id="notice-popup-title"></h2><div class="notice-popup-body"></div><a class="notice-popup-more">공지사항에서 보기 →</a><div class="notice-popup-foot"><button type="button" data-hide-today>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div></div>';
+    overlay.innerHTML = '<div class="notice-popup-box" role="dialog" aria-modal="true" aria-labelledby="notice-popup-title"><div class="notice-popup-head"><span></span><button type="button" class="notice-popup-x" aria-label="닫기">×</button></div><h2 id="notice-popup-title"></h2><button type="button" class="notice-popup-toggle" aria-expanded="false" aria-controls="notice-popup-body">내용 보기</button><div class="notice-popup-body" id="notice-popup-body" hidden></div><a class="notice-popup-more">공지사항에서 보기 →</a><div class="notice-popup-foot"><button type="button" data-hide-today>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div></div>';
     overlay.querySelector('.notice-popup-head span').textContent = [popup.category, popup.date].filter(Boolean).join(' · ');
     overlay.querySelector('h2').textContent = popup.title;
     const body = overlay.querySelector('.notice-popup-body');
-    if (popup.body) body.textContent = popup.body; else body.remove();
+    const toggle = overlay.querySelector('.notice-popup-toggle');
+    if (popup.body) body.textContent = popup.body; else { body.remove(); toggle.remove(); }
+    // The body starts collapsed; the toggle expands/collapses it.
+    toggle?.addEventListener('click', () => {
+      const open = body.hidden;
+      body.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '내용 닫기' : '내용 보기';
+    });
     overlay.querySelector('.notice-popup-more').href = `/notices#notice-${popup.id}`;
     const close = (hide) => {
       if (hide) { try { localStorage.setItem(`bmhf_popup_hide_${popup.id}`, today); } catch {} }
