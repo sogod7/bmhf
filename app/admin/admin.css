@@ -278,3 +278,24 @@ textarea.ac-input{resize:vertical;line-height:1.6}
 @media(max-width:1200px){.an-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){.an-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.an-trend{gap:2px;height:140px}.an-col b{display:none}.an-share{width:60px}.an-table{font-size:12.5px}}
 .ac-grid-2>*,.ac-main>*{min-width:0}.an-table-wrap{max-width:100%}
+/* Admin charts (AdminChart.js) */
+.acx{margin:0}.acx-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 6px;color:var(--ac-muted);font-size:12.5px}.acx-legend span{display:inline-flex;align-items:center;gap:6px}
+.acx-legend i,.acx-tip i{display:inline-block;width:14px;height:3px;border-radius:2px}.acx-legend i.is-dashed,.acx-tip i.is-dashed{height:0;border-top:2px dashed;background:none!important}
+.acx-plot{position:relative;width:100%;touch-action:pan-y;outline:0;border-radius:10px}.acx-plot:focus-visible{box-shadow:0 0 0 3px rgba(18,101,216,.18)}
+.acx-plot svg{display:block;overflow:visible}.acx-grid{stroke:#edf1f6;stroke-width:1}.acx-base{stroke:#cfd8e3;stroke-width:1}.acx-tick{fill:#7b8a9b;font-size:10.5px;font-variant-numeric:tabular-nums}
+.acx-bar{transition:opacity .12s}.acx-plot:hover .acx-bar:not(.is-active),.acx-plot:focus-visible .acx-bar:not(.is-active){opacity:.55}
+.acx-focus line{stroke:#9fb0c4;stroke-width:1;stroke-dasharray:3 3}
+.acx-tip{position:absolute;top:2px;z-index:3;display:grid;gap:3px;min-width:132px;padding:9px 11px;border:1px solid var(--ac-line);border-radius:10px;background:#fff;box-shadow:0 10px 26px rgba(10,30,55,.14);transform:translateX(-50%);pointer-events:none;font-size:12px}
+.acx-tip strong{color:var(--ac-navy);font-size:12.5px}.acx-tip span{display:flex;align-items:center;gap:6px;color:var(--ac-muted);white-space:nowrap}.acx-tip b{margin-left:auto;padding-left:12px;color:var(--ac-text);font-variant-numeric:tabular-nums}
+.acx-tip .is-detail{padding-left:20px}
+/* ? help tips on traffic channels: hover, keyboard focus, or tap (focus) */
+.an-help{position:relative;display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;margin-left:5px;border-radius:50%;background:#e8eef5;color:#5b6d82;font-size:11px;font-weight:700;line-height:1;vertical-align:1px;cursor:help;outline:0}
+.an-help:hover,.an-help.is-open{background:var(--ac-blue);color:#fff}.an-help:focus-visible{box-shadow:0 0 0 3px rgba(18,101,216,.25)}
+.an-tip{position:fixed;z-index:200;padding:8px 10px;border-radius:8px;background:#13263b;color:#fff;font-size:12px;font-weight:400;line-height:1.5;text-align:left;white-space:normal;letter-spacing:0;pointer-events:none;box-shadow:0 8px 20px rgba(10,30,55,.2)}.an-tip.is-above{transform:translateY(-100%)}
+.an-rank li{overflow:visible}.an-rank-label{display:flex;align-items:center;overflow:visible}.an-rank-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.an-note{margin:10px 0 0;color:var(--ac-muted);font-size:12px}
+
+.an-nowrap{white-space:nowrap}.an-muted{color:var(--ac-muted)}
+
+/* Primary buttons: gentle top-to-bottom gradient */
+.ac-btn.is-primary{border-color:#105dc9;background:linear-gradient(180deg,#2b7ae6 0%,#1265d8 100%)}.ac-btn.is-primary:hover{background:linear-gradient(180deg,#236fdb 0%,#0f59c4 100%)}

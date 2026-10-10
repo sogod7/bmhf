@@ -2,9 +2,11 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { hasAdminSession } from '../../../lib/admin-auth';
 import { formatDateTime } from '../../../lib/admin-constants';
-import { RANGES, analyticsReport, channelLabel, sourceLabel } from '../../../lib/analytics';
+import { RANGES, analyticsReport, channelLabel, channelTip, sourceLabel } from '../../../lib/analytics';
 import { listInquiries } from '../../../lib/inquiries';
+import AdminChart from '../AdminChart';
 import AdminShell from '../AdminShell';
+import Help from '../Help';
 
 export const metadata = { title: '접속 통계' };
 
@@ -27,9 +29,9 @@ function Delta({ now, before, lowerIsBetter = false }) {
 function Ranking({ rows, empty = '데이터가 없습니다.', valueLabel = '방문' }) {
   if (!rows.length) return <p className="ac-empty">{empty}</p>;
   const max = Math.max(...rows.map((row) => row.value));
-  return <ol className="an-rank">{rows.map((row) => <li key={row.key} title={`${row.label} · ${valueLabel} ${number(row.value)}`}>
+  return <ol className="an-rank">{rows.map((row) => <li key={row.key} title={row.tip ? undefined : `${row.label} · ${valueLabel} ${number(row.value)}`}>
     <span className="an-rank-bar" style={{ width: `${(row.value / max) * 100}%` }} aria-hidden="true" />
-    <span className="an-rank-label">{row.label}{row.sub && <small>{row.sub}</small>}</span>
+    <span className="an-rank-label"><span className="an-rank-text">{row.label}{row.sub && <small>{row.sub}</small>}</span><Help text={row.tip} /></span>
     <b>{number(row.value)}</b>
   </li>)}</ol>;
 }
@@ -58,8 +60,6 @@ export default async function AdminAnalyticsPage({ searchParams }) {
     ['평균 체류', duration(t.avgDuration), <Delta key="d" now={t.avgDuration} before={p.avgDuration} />, '2페이지 이상 본 방문 기준'],
     ['문의 전환', `${number(t.inquiries)}건`, <Delta key="d" now={t.inquiries} before={p.inquiries} />, `방문 대비 ${percent(t.conversion)}`],
   ];
-  const maxTrend = Math.max(1, ...report.trend.map((bucket) => bucket.visitors));
-  const maxHour = Math.max(1, ...report.hours.map((hour) => hour.views));
   const hasData = t.views > 0;
   const periodText = report.range.id === 'today' ? '오늘' : `최근 ${report.range.days}일`;
 
@@ -71,35 +71,29 @@ export default async function AdminAnalyticsPage({ searchParams }) {
     {!hasData && <p className="ac-banner">아직 {periodText} 동안 수집된 방문 기록이 없습니다. 통계는 이 기능을 배포한 시점부터 쌓입니다.</p>}
 
     <section className="ac-card">
-      <div className="ac-card-head"><h2>{report.range.id === 'today' ? '시간대별 방문자 (오늘)' : '일별 방문자'}</h2><span>막대에 마우스를 올리면 페이지뷰도 보입니다</span></div>
-      <div className="an-trend" style={{ '--an-cols': report.trend.length }} role="img" aria-label={`${periodText} 방문자 추이`}>
-        {report.trend.map((bucket, index) => {
-          const showLabel = report.trend.length <= 14 || index % Math.ceil(report.trend.length / 12) === 0 || index === report.trend.length - 1;
-          return <div key={bucket.key} className="an-col" title={`${bucket.label} · 방문자 ${number(bucket.visitors)}명 · 페이지뷰 ${number(bucket.views)}`} tabIndex={0}>
-            <i style={{ height: `${(bucket.visitors / maxTrend) * 100}%` }} />
-            {bucket.visitors > 0 && report.trend.length <= 31 && <b style={{ bottom: `calc(${(bucket.visitors / maxTrend) * 100}% + 2px)` }}>{bucket.visitors}</b>}
-            {showLabel && <span>{bucket.label}</span>}
-          </div>;
-        })}
-      </div>
+      <div className="ac-card-head"><h2>{report.range.id === 'today' ? '시간대별 방문자 (오늘)' : '일별 방문자 추이'}</h2><span>그래프에 마우스를 올리거나 탭하면 수치가 보입니다</span></div>
+      <AdminChart type="line" unit="명" seriesName={report.range.id === 'today' ? '오늘' : '이번 기간'} compareName={report.range.id === 'today' ? '어제' : '이전 기간'} ariaLabel={`${periodText} 방문자 추이`}
+        points={report.trend.map((bucket) => ({ label: bucket.label, value: bucket.visitors, compare: bucket.previous, details: [['페이지뷰', number(bucket.views)]] }))} />
     </section>
 
     <section className="ac-card">
-      <div className="ac-card-head"><h2>유입 채널</h2><span>방문(세션) 기준 · 문의 전환은 문의한 방문자의 유입 경로 기준</span></div>
+      <div className="ac-card-head"><h2>접속 경로별 트래픽</h2><span>방문(세션) 기준 · 문의 전환은 문의한 방문자의 접속 경로 기준</span></div>
       {report.channels.length ? <div className="an-table-wrap"><table className="an-table">
-        <thead><tr><th>채널</th><th className="is-num">방문</th><th>비율</th><th className="is-num">문의</th><th className="is-num">전환율</th></tr></thead>
+        <thead><tr><th>접속 경로</th><th className="is-num">방문</th><th>비율</th><th className="is-num">이전 기간</th><th className="is-num">문의</th><th className="is-num">전환율</th></tr></thead>
         <tbody>{report.channels.map((channel) => <tr key={channel.id}>
-          <td>{channel.label}</td><td className="is-num">{number(channel.sessions)}</td>
+          <td className="an-nowrap">{channel.label}<Help text={channel.tip} /></td><td className="is-num">{number(channel.sessions)}</td>
           <td><span className="an-share"><i style={{ width: `${channel.share * 100}%` }} /></span><small>{percent(channel.share)}</small></td>
+          <td className="is-num an-muted">{number(channel.previous)}</td>
           <td className="is-num">{channel.inquiries || '-'}</td><td className="is-num">{channel.sessions ? percent(channel.conversion) : '-'}</td>
         </tr>)}</tbody>
       </table></div> : <p className="ac-empty">데이터가 없습니다.</p>}
+      {report.internalSessions > 0 && <p className="an-note">사이트 내 이동 {number(report.internalSessions)}건은 접속 경로 집계에서 제외했습니다.<Help text={channelTip('internal')} /></p>}
     </section>
 
     <div className="ac-grid-2">
       <section className="ac-card">
-        <div className="ac-card-head"><h2>유입 경로 상세</h2><span>직접 방문 제외</span></div>
-        <Ranking rows={report.sources.map((row) => ({ key: `${row.channel}${row.source}`, label: sourceLabel(row.source), sub: channelLabel(row.channel), value: row.count }))} empty="외부에서 유입된 방문이 없습니다." />
+        <div className="ac-card-head"><h2>접속 경로 TOP</h2><span>세부 출처 · Direct 제외</span></div>
+        <Ranking rows={report.sources.map((row) => ({ key: `${row.channel}${row.source}`, label: sourceLabel(row.source), sub: channelLabel(row.channel), tip: channelTip(row.channel), value: row.count }))} empty="외부에서 들어온 방문이 없습니다." />
       </section>
       <section className="ac-card">
         <div className="ac-card-head"><h2>검색어 · 광고 키워드</h2><span>네이버·다음 등 검색어가 전달된 경우</span></div>
@@ -133,9 +127,7 @@ export default async function AdminAnalyticsPage({ searchParams }) {
 
     <section className="ac-card">
       <div className="ac-card-head"><h2>시간대별 페이지뷰</h2><span>한국 시간 기준 · {periodText} 합계</span></div>
-      <div className="an-trend an-hours" style={{ '--an-cols': 24 }} role="img" aria-label="시간대별 페이지뷰">
-        {report.hours.map((hour) => <div key={hour.hour} className="an-col" title={`${hour.hour}시 · 페이지뷰 ${number(hour.views)}`} tabIndex={0}><i style={{ height: `${(hour.views / maxHour) * 100}%` }} />{hour.hour % 3 === 0 && <span>{hour.hour}시</span>}</div>)}
-      </div>
+      <AdminChart type="bar" seriesName="페이지뷰" height={180} ariaLabel="시간대별 페이지뷰" points={report.hours.map((hour) => ({ label: `${hour.hour}시`, title: `${hour.hour}:00 – ${hour.hour}:59`, value: hour.views }))} />
     </section>
 
     {report.leads.length > 0 && <section className="ac-card">

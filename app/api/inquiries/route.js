@@ -36,7 +36,7 @@ function attributionOf(input, request) {
   const siteHost = (request.headers.get('host') || '').toLowerCase().replace(/^www\./, '').replace(/:\d+$/, '');
   const touch = (value) => {
     if (!value || typeof value !== 'object') return null;
-    const { channel, source_name, search_term, utm_campaign } = classify({ url: String(value.u || '/').slice(0, 1000), referrer: String(value.r || '').slice(0, 1000), siteHost });
+    const { channel, source_name, search_term, utm_campaign } = classify({ url: String(value.u || '/').slice(0, 1000), referrer: String(value.r || '').slice(0, 1000), siteHost, ua: request.headers.get('user-agent') || '', internal: value.i === true });
     const at = Number(value.at);
     return { channel, source_name, search_term, utm_campaign, landing: String(value.u || '/').split('?')[0].slice(0, 300), at: Number.isFinite(at) && at > 0 ? new Date(at).toISOString() : null };
   };

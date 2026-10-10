@@ -68,3 +68,7 @@
 @media(max-width:720px){.site-banner{padding:8px 42px 8px 12px;font-size:12.5px;word-break:keep-all}}
 
 .global-mobile-language{display:grid;grid-template-columns:1fr 1fr;gap:4px;width:100%;box-sizing:border-box;padding:4px;border:1px solid #d8e1eb;border-radius:10px;background:#f6f9fc}.global-mobile-language a{display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:40px;padding:8px 6px;border-radius:7px;color:#4b6075;font-size:13px;font-weight:600;white-space:nowrap}.global-mobile-language img{width:18px;height:12px;border-radius:2px;flex:0 0 auto}.global-mobile-language a.is-active{background:#fff;color:#163c67;box-shadow:0 1px 4px rgba(20,41,65,.12)}
+
+/* Blue buttons: gentle top-to-bottom gradient */
+.global-quote{background:linear-gradient(180deg,#4f8ff8 0%,#3577ea 100%);border:1px solid #2f70e0;box-shadow:0 4px 12px rgba(53,119,234,.18)}.global-quote:hover{background:linear-gradient(180deg,#4687f2 0%,#2d6ddf 100%)}
+.global-mobile-quote-btn{background:linear-gradient(180deg,#4f8ff8 0%,#3577ea 100%);box-shadow:0 4px 12px rgba(53,119,234,.2)}

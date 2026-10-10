@@ -31,20 +31,21 @@
     let session = readJson('bmhf_sess');
     let landing = false;
     if (!session || now - session.at > SESSION_MS || (referrer && referrer !== session.r) || (campaign && url !== session.u)) {
-      session = { id: randomId(), r: referrer, u: url, start: now };
+      // i: the session started from another page of this site (counted as 사이트 내 이동).
+      session = { id: randomId(), r: referrer, u: url, start: now, i: !referrer && hostOf(document.referrer) === location.hostname };
       landing = true;
     }
     session.at = now;
     write('bmhf_sess', JSON.stringify(session));
     if (!read('bmhf_first')) write('bmhf_first', JSON.stringify({ r: session.r, u: session.u, at: session.start }));
 
-    const body = JSON.stringify({ v: visitor, s: session.id, l: landing, p: url, t: document.title, r: session.r, u: session.u, lang: navigator.language });
+    const body = JSON.stringify({ v: visitor, s: session.id, l: landing, p: url, t: document.title, r: session.r, u: session.u, i: session.i === true, lang: navigator.language });
     if (!(navigator.sendBeacon && navigator.sendBeacon('/api/visit', body))) fetch('/api/visit', { method: 'POST', body, keepalive: true }).catch(() => {});
   }
 
   window.__bmhfVisit = visit;
   // Sent along with quote inquiries so the admin can see which channel produced each lead.
-  window.__bmhfAttribution = () => ({ visitor: read('bmhf_vid'), first: readJson('bmhf_first'), session: (({ r, u, start } = {}) => ({ r, u, at: start }))(readJson('bmhf_sess') || {}) });
+  window.__bmhfAttribution = () => ({ visitor: read('bmhf_vid'), first: readJson('bmhf_first'), session: (({ r, u, start, i } = {}) => ({ r, u, at: start, i }))(readJson('bmhf_sess') || {}) });
 
   if (document.readyState === 'complete') setTimeout(visit, 0);
   else window.addEventListener('load', () => setTimeout(visit, 0), { once: true });

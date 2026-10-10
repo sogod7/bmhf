@@ -55,3 +55,5 @@
   .back-link{margin-top:18px}
 }
 @media(prefers-reduced-motion:reduce){.login-spinner{animation-duration:1.6s}}
+
+.login-submit{background:linear-gradient(180deg,#2b7ae6 0%,#1265d8 100%)}.login-submit:hover:not(:disabled){background:linear-gradient(180deg,#236fdb 0%,#0f59c4 100%)}

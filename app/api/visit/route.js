@@ -20,7 +20,7 @@ export async function POST(request) {
   if (path.startsWith('/admin') || path.startsWith('/api/')) return done();
 
   const siteHost = (request.headers.get('host') || '').toLowerCase().replace(/^www\./, '').replace(/:\d+$/, '');
-  const source = classify({ url: String(body.u || '/').slice(0, 1000), referrer: String(body.r || '').slice(0, 1000), siteHost });
+  const source = classify({ url: String(body.u || '/').slice(0, 1000), referrer: String(body.r || '').slice(0, 1000), siteHost, ua, internal: body.i === true });
   const city = request.headers.get('x-vercel-ip-city');
   try {
     await recordView({
