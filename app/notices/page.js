@@ -1,6 +1,7 @@
 import { connection } from 'next/server';
 import { displayDate, initialNotices, orderedNotices } from '../../lib/notices';
 import { listPublicNotices } from '../../lib/notices-server';
+import OpenFromHash from './OpenFromHash';
 import './notices.css';
 
 export default async function NoticesPage() {
@@ -15,18 +16,22 @@ export default async function NoticesPage() {
       </header>
       <section className="notices-list">
         {notices.map((notice) => (
-          <article key={notice.id || notice.title} id={notice.id ? `notice-${notice.id}` : undefined}>
-            <div className="notice-meta">
-              {notice.pinned && <b>고정</b>}
-              <span>{notice.category}</span>
-              <time dateTime={String(notice.notice_date).slice(0, 10)}>{displayDate(notice.notice_date)}</time>
-            </div>
-            <h2>{notice.title}</h2>
-            <p>{notice.body}</p>
-          </article>
+          <details key={notice.id || notice.title} id={notice.id ? `notice-${notice.id}` : undefined} className="notice-item">
+            <summary>
+              <span className="notice-meta">
+                {notice.pinned && <b>고정</b>}
+                <span>{notice.category}</span>
+                <time dateTime={String(notice.notice_date).slice(0, 10)}>{displayDate(notice.notice_date)}</time>
+              </span>
+              <span className="notice-title">{notice.title}</span>
+              <i className="notice-chevron" aria-hidden="true" />
+            </summary>
+            <div className="notice-body">{notice.body || '내용이 없습니다.'}</div>
+          </details>
         ))}
         {!notices.length && <p className="notices-empty">등록된 공지사항이 없습니다.</p>}
       </section>
+      <OpenFromHash />
     </main>
   );
 }
