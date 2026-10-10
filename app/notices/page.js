@@ -15,7 +15,7 @@ export default async function NoticesPage() {
       </header>
       <section className="notices-list">
         {notices.map((notice) => (
-          <article key={notice.id || notice.title}>
+          <article key={notice.id || notice.title} id={notice.id ? `notice-${notice.id}` : undefined}>
             <div className="notice-meta">
               {notice.pinned && <b>고정</b>}
               <span>{notice.category}</span>

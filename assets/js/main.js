@@ -348,7 +348,7 @@ if (homeHero && !document.querySelector('[data-home-notices]')) {
   const container = document.createElement('div'); container.className = 'container home-notice-inner';
   const heading = document.createElement('div'); heading.innerHTML = '<p class="eyebrow blue">Notice</p><h2>공지사항</h2>'; container.appendChild(heading);
   const list = document.createElement('div'); list.className = 'home-notice-list';
-  const renderNotices = (notices) => list.replaceChildren(...notices.slice(0, 3).map((notice) => { const link = document.createElement('a'); link.href = '/notices'; const title = document.createElement('strong'); title.textContent = notice.title; const meta = document.createElement('span'); meta.textContent = `${notice.pinned ? '고정 · ' : ''}${notice.date}`; link.append(title, meta); return link; }));
+  const renderNotices = (notices) => list.replaceChildren(...notices.slice(0, 3).map((notice) => { const link = document.createElement('a'); link.href = notice.id ? `/notices#notice-${notice.id}` : '/notices'; const title = document.createElement('strong'); title.textContent = notice.title; const meta = document.createElement('span'); meta.textContent = `${notice.pinned ? '고정 · ' : ''}${notice.date}`; link.append(title, meta); return link; }));
   renderNotices(defaults);
   fetch('/api/notices?limit=3').then((response) => response.json()).then((data) => { if (Array.isArray(data.notices) && data.notices.length) renderNotices(data.notices); }).catch(() => {});
   container.appendChild(list); const more = document.createElement('a'); more.className = 'text-link'; more.href = '/notices'; more.textContent = '공지사항 전체보기 →'; container.appendChild(more); section.appendChild(container);

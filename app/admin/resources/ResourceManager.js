@@ -57,7 +57,7 @@ export default function ResourceManager({ initialResources }) {
   return <>
     <div className="ac-toolbar">
       <p className="ac-toolbar-note">공개 {resources.filter((item) => item.status === 'published').length}건 · 누적 다운로드 {resources.reduce((sum, item) => sum + (item.download_count || 0), 0).toLocaleString('ko-KR')}회</p>
-      <div className="ac-toolbar-side"><a className="ac-btn" href="/en/resources" target="_blank" rel="noreferrer">자료실 ↗</a><button type="button" className="ac-btn is-primary" onClick={() => setEditing('new')} disabled={editing === 'new'}>자료 등록</button></div>
+      <div className="ac-toolbar-side"><a className="ac-btn" href="/resources" target="_blank" rel="noreferrer">자료실 ↗</a><button type="button" className="ac-btn is-primary" onClick={() => setEditing('new')} disabled={editing === 'new'}>자료 등록</button></div>
     </div>
     {editing === 'new' && <section className="ac-card"><h2 className="ac-card-title">새 기술자료 등록</h2><ResourceForm isNew initial={{ type: 'catalog', status: 'published', title_ko: '', title_en: '', description_ko: '', description_en: '' }} onCancel={() => setEditing(null)} onSave={save} /></section>}
     <div className="ac-stack">

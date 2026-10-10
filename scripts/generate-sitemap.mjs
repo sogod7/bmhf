@@ -15,6 +15,7 @@ const staticKoreanRoutes = [
   { path: 'products', priority: '0.9', changefreq: 'weekly' },
   { path: 'videos', priority: '0.7', changefreq: 'monthly' },
   { path: 'notices', priority: '0.7', changefreq: 'weekly' },
+  { path: 'resources', priority: '0.7', changefreq: 'monthly' },
   { path: 'support', priority: '0.7', changefreq: 'monthly' },
 ];
 

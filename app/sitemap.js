@@ -16,6 +16,7 @@ export default function sitemap() {
     { url: `${baseUrl}/products`, priority: 0.9, changeFrequency: 'weekly' },
     { url: `${baseUrl}/videos`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${baseUrl}/notices`, priority: 0.7, changeFrequency: 'weekly' },
+    { url: `${baseUrl}/resources`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${baseUrl}/support`, priority: 0.7, changeFrequency: 'monthly' },
   ].map((item) => ({
     ...item,

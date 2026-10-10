@@ -3,313 +3,319 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bmhf.co.kr/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/company.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/technology.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/solutions.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/applications.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/projects.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/contact.html</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/videos</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/notices</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://bmhf.co.kr/resources</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bmhf.co.kr/support</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/out-shaft</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/in-shaft</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/flange</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/cam-shaft</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/shaft</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/steering</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/gear-spindle</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heat-treatment/multi-axis</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/carbide</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/pcd-tip</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/end-mill</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/drill</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/pipe-fitting</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/brazing/multi-station</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/motor-case-01</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/motor-case-02</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/shrink-fit-01</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/gear-shaft-heater</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/shrink-fit-02</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/shrink-fit-03</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/porous-metal</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/medical-experimental</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/drill-endmill</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/mobile-phone-case</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/motor-case-03</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/forging</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/speaker-grill</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/remote-controller</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/products/heating/molding-insert</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/company</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/technology</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/solutions</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/applications</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/projects</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/videos</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/notices</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/support</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/board</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/resources</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bmhf.co.kr/en/contact</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
